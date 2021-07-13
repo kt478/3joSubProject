@@ -59,10 +59,7 @@
 .list-group-item{padding:0px;}
 .admin_menu{width:100%; height:200px; text-align:center; line-height:200px;}
 
-/* 블랙리스트 */
-body {background-color: white; border-color: black;}
-.row div{text-align:center;}
-.container {box-sizing: border-box;}
+span{font-size:30px; font-weight:600;}
 
 </style>
 
@@ -93,32 +90,6 @@ body {background-color: white; border-color: black;}
 			}
 		})  
 		
-		
-		//삭제버튼
-      $(".block_reg").on("click",function() {
-               $(".block_id").val($(this).parent().siblings(".mem_id").text());
-               $(".block_name").val($(this).parent().siblings(".mem_name").text());
-               $(".block_email").val($(this).parent().siblings(".mem_email").text());
-               $(".block_contact").val($(this).parent().siblings(".mem_contact").text());
-               $("#block_reg_form").submit();
-               
-            })
-            
-            
-            $("#blacklistshowup").on("click",function(){
-               var box1 = document.getElementById("BlackListView");
-               var box2 = document.getElementById("BlackListView2");
-               
-               
-            if(box1.style.display=="none"||box2.style.display=="none"){   
-               $("#BlackListView").css("display","block");
-               $("#BlackListView2").css("display","block");
-            }
-            else if(box1.style.display=="block"||box2.style.display=="block"){
-               $("#BlackListView").css("display","none");
-               $("#BlackListView2").css("display","none");
-            }
-		})
    })
 </script>
 
@@ -239,91 +210,20 @@ body {background-color: white; border-color: black;}
   				<a href="${pageContext.request.contextPath}/memberList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">회원 명단</a>
 			</li>
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/questionList.ask?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">쪽지함</a>
+  				<a href="${pageContext.request.contextPath}/questionList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">쪽지함</a>
  			 </li>
   			<li class="list-group-item">
-  				<a href="#" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup">블랙리스트 명단</a></li>
+  				<a href="${pageContext.request.contextPath}/blackList.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup">블랙리스트 명단</a>
   			</li>
 		</ul>
 	</div>
-
-<!-- 블랙리스트 -->
-   <div class="container-lg border p-0" id="BlackListView"
-      style="display:none;width: 1600px; height: 500px; margin-left: 250px; margin-top: 170px; box-sizing: border-box">
-      <h3 style="text-align: center">가입 회원 정보 조회</h3>
-
-      <div class="row m-0" style="box-sizing: border-box">
-
-         <div class="border col-lg-1 col-xl-1">아이디</div>
-         <div class="border col-lg-2 col-xl-2">이메일</div>
-         <div class="border col-lg-1 col-xl-1">이름</div>
-         <div class="border col-lg-1 col-xl-1">연령대</div>
-         <div class="border col-lg-2 col-xl-2">연락처</div>
-         <div class="border col-lg-1 col-xl-1">가입날짜</div>
-         <div class="border col-lg-3   col-xl-2">강제탈퇴사유설정</div>
-         <div class="border col-lg-2 col-xl-2">강제 탈퇴</div>
-
-      </div>
-
-      <c:forEach var="mem" items="${Member}">
-         <form action="${pageContext.request.contextPath}/block_member.mem"
-            method="post" id="block_reg_form">
-            <div class="row m-0" style="box-sizing: border-box">
-               <div class="border col-lg-1 col-xl-1 mem_id">${mem.id}</div>
-               <div class="border col-lg-2 col-xl-2 mem_email">${mem.email}</div>
-               <div class="border col-lg-1 col-xl-1 mem_name">${mem.person_name}</div>
-               <div class="border col-lg-1 col-xl-1 ">${mem.person_age}</div>
-               <div class="border col-lg-2 col-xl-2 mem_contact">${mem.contact}</div>
-               <div class="border col-lg-1 col-xl-1">${mem.reg_date}</div>
-               <div class="border col-lg-3 col-xl-2">
-                  <select name="block_reason">
-                     <option value="타 회원 비방 및 욕설">타 회원 비방 및 욕설</option>
-                     <option value="불법적인 경로로 가입">불법적인 경로로 가입</option>
-                     <option value="불법적인/선정적인 게시물 게시">불법적/선정적인 게시물 게시</option>
-                  </select>
-               </div>
-               <div class="border col-lg-2 col-xl-2">
-                  <input type="button" value="블랙리스트로 등록" class="block_reg">
-               </div>
-               <input type=hidden name="id" class="block_id" value=""> <input
-                  type=hidden name="name" class="block_name" value=""> <input
-                  type=hidden name="contact" class="block_contact" value="">
-               <input type=hidden name="email" class="block_email" value="">
-            </div>
-         </form>
-      </c:forEach>
-   </div>
-
-   <div class="container-lg border p-0" id="BlackListView2"
-      style="display:none; width: 1600px; height: 500px; margin-left: 250px; margin-top: 170px; box-sizing: border-box">
-      <h3 style="text-align: center">블랙리스트 회원 조회</h3>
-
-      <div class="row m-0" style="box-sizing: border-box; margin: auto;">
-         <div class="border col-lg-1 col-xl-1">번호</div>
-         <div class="border col-lg-1 col-xl-1">아이디</div>
-         <div class="border col-lg-2 col-xl-2">이메일</div>
-         <div class="border col-lg-1 col-xl-1">이름</div>
-         <div class="border col-lg-2 col-xl-2">연락처</div>
-         <div class="border col-lg-3   col-xl-2">강제 탈퇴 사유</div>
-         <div class="border col-lg-1 col-xl-1">강제 탈퇴 날짜</div>
-
-      </div>
-
-      <div class="row m-0" style="box-sizing: border-box">
-
-         <c:forEach var="blocked" items="${BlackList}">
-         
-            <div class="border col-lg-1 col-xl-1">${blocked.seq}</div>
-            <div class="border col-lg-1 col-xl-1">${blocked.id}</div>
-            <div class="border col-lg-2 col-xl-2">${blocked.email}</div>
-            <div class="border col-lg-1 col-xl-1">${blocked.name}</div>
-            <div class="border col-lg-2 col-xl-2">${blocked.contact}</div>
-            <div class="border col-lg-3 col-xl-2">${blocked.block_reason}</div>
-            <div class="border col-lg-1 col-xl-1">${blocked.block_date}</div>
-
-         </c:forEach>
-      </div>
-   </div>
-
+	
+	
+	<div class="container" style="text-align:center; position:absolute; top:350px; left:300px;">
+		<span>환영합니다  관리자님
+		<br><br>
+		이곳은  관리자  페이지입니다</span>
+	</div>
+	
 </body>
 </html>

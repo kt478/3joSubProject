@@ -66,6 +66,8 @@
 	font-weight: 600;
 }
 
+p {position:absolute; top:200px; left:300px; color: white;}
+
 /* 게시글 폼 */
 #viewForm {border: 1px solid #f2f2f2; border-radius: 5px;}
 .title {padding-left: 20px;}
@@ -203,7 +205,7 @@
                      </li>
                  </ul>
                    <form class="form-inline my-2 my-lg-0" id="loginNavi">
-                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.admin">관리자</a>
+                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.ad">관리자</a>
                      <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
                    </form>
               </div>
@@ -246,7 +248,7 @@
 	</c:choose>
 
 	<!-- 메인 내비바 아래 공간 -->
-	<div class="container-fluid " id="temp" style="background-image: url('board/board.jpg');">자유게시판</div>
+	<div class="container-fluid " id="temp" style="background-image: url('board/b6.webp');"><p></p></div>
 
 		<div class="container">
 			

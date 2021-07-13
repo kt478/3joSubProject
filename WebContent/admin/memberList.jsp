@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 명단 리스트</title>
+<title>관리자_회원명단</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -91,11 +91,11 @@ $(function () {
 .admin_menu{width:100%; height:200px; text-align:center; line-height:200px;}
 
 /* 회원 명단 style */
-.memberList{position:absolute; top:150px; left:400px;}
+.memberList{position:absolute; top:200px; left:300px;}
 .memberTitle{background-color:#c8e3c4;}
 .box{border:1px solid #ddd;}
 
-.look{position:absolute; top:100px; left:400px; magrin-top:500px;}
+.look{position:absolute; top:150px; left:300px;}
 #searchBtn{width:100%;}
 </style>
 </head>
@@ -216,10 +216,10 @@ $(function () {
   				<a href="${pageContext.request.contextPath}/memberList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">회원 명단</a>
 			</li>
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/questionList.ask?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">쪽지함</a>
+  				<a href="${pageContext.request.contextPath}/questionList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">쪽지함</a>
  			 </li>
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/adminMain.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup">블랙리스트 명단</a></li>
+  				<a href="${pageContext.request.contextPath}/blackList.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup">블랙리스트 명단</a></li>
   			</li>
 		</ul>
 	</div>
