@@ -97,6 +97,7 @@ public class CosController extends HttpServlet {
 			}else if(cmd.contentEquals("/exam.cos")) {
 				PersonDTO dto = (PersonDTO)request.getSession().getAttribute("login");
 				String id = dto.getId();
+				System.out.println(id);
 				
 				String getStart = request.getParameter("start_date");
 				String start_date = getStart.substring(0,10);
@@ -118,7 +119,7 @@ public class CosController extends HttpServlet {
 				System.out.println(local + " : " + place_name);
 				System.out.println(postcode + " : " + address1);
 				
-				  String pet_feature = ddao.getFeature(id);
+				String pet_feature = ddao.getFeature(id);
 				  
 				  CosDTO wdto = dao.getAllAddress(place_name);
 				  
