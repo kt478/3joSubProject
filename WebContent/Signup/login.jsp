@@ -97,7 +97,7 @@ $(function(){
 
 				<section class="sign-in">
 
-					<div class="container">
+					<div class="container" style="margin-top: 60px;">
 						<div class="signin-content">
 							<div class="signin-image">
 								<figure>
@@ -107,7 +107,7 @@ $(function(){
 								
 							</div>
 
-							<div class="signin-form">
+							<div class="signin-form" style="margin-top:30px;">
 								<h2 class="form-title">로그인</h2>
 
 								<form action="${pageContext.request.contextPath}/login.mem"
@@ -123,16 +123,13 @@ $(function(){
 											placeholder="패스워드를 입력하세요." />
 									</div>
 									<div class="form-group">
-										<input type="checkbox" name="remember-me" id="remember-me"
-											class="agree-term" /> <label for="remember-me"
-											class="label-agree-term"><span><span></span></span>Remember
-											me</label>
-											<br><a href="signupView.jsp" class="signup-image-link" style="margin-left:-100px;margin-top:27px; ">아이디 찾기</a>
-											<a href="signupView.jsp" class="signup-image-link" style=" margin-top:-24px; margin-left:95px;">비밀번호 찾기</a>
+										
+											<br><a href="Idfind.jsp" class="signup-image-link" style="margin-left:200px;margin-top:-23px; ">아이디 찾기</a>
+											
 									</div>
-									<div class="form-group form-button">
+									<div class="form-group form-button" style="text-align:center">
 										<input type="button" name="signin" id="signin"
-											class="form-submit" value="Signin" />
+											class="form-submit" value="로그인" />
 									</div>
 								</form>
 
