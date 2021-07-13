@@ -50,15 +50,15 @@
         				$("#weatherDay").append("예보가<br>아직 확정되지 않았습니다.");
         			}else{
         			 	if(resp[0].text == "맑음"){
-        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/sun.PNG");
+        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/Mypage/sun.PNG");
         				}else if(resp[0].text == "구름조금"){
-        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/littlecloud.PNG");
+        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/Mypage/littlecloud.PNG");
         				}else if(resp[0].text == "구름많음"){
-        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/cloudy.PNG");
+        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/Mypage/cloudy.PNG");
         				}else if(resp[0].text == "흐림"){
-        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/gray.PNG");
+        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/Mypage/gray.PNG");
         				}else if(resp[0].text == "비"){
-        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/rain.PNG");
+        					$("#weatherimg").attr("src","${pageContext.request.contextPath}/Mypage/rain.PNG");
         				} 
         				$("#weatherContents").text(resp[0].text);
         				
