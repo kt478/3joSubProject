@@ -129,16 +129,18 @@ $(function() {
 	        	<div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
 	          		<ul class="navbar-nav mr-auto">
 	            		<li class="nav-item active">
-			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+			            	<strong>산책장소</strong>
+			            	<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			            	<a class="nav-link beforelogin" href="javascript:;">펫시터</a>
+			            	<a class="nav-link beforelogin" href="javascript:;"><strong>펫시터</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link beforelogin" href="javascript:;">갤러리</a>
+			                <a class="nav-link beforelogin" href="javascript:;"><strong>갤러리</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link beforelogin" href="javascript:;">자유게시판</a>
+			                <a class="nav-link beforelogin" href="javascript:;"><strong>자유게시판</strong></a>
 			            </li>
 			            <li class="nav-item" id="searchBox">
 			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
@@ -146,8 +148,8 @@ $(function() {
 			            </li>
 			        </ul>
 		          	<form class="form-inline my-2 my-lg-0" id="loginNavi">
-		            	<a class="mr-sm-2 p-1" style="width:70px;" href="Signup/login.jsp">로그인</a>
-		            	<a class="my-2 my-sm-0" style="width:70px;" href="Signup/signupView.jsp">회원가입</a>
+		            	<a class="mr-sm-2 p-1" style="width:70px;" href="Signup/login.jsp"><strong>로그인</strong></a>
+		            	<a class="my-2 my-sm-0" style="width:70px;" href="Signup/signupView.jsp"><strong>회원가입</strong></a>
 		          	</form>
 		        </div>
 			</nav>
@@ -163,16 +165,18 @@ $(function() {
               <div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
                 <ul class="navbar-nav mr-auto">
                      <li class="nav-item active">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+                        <strong>산책장소</strong>
+                        <span class="sr-only">(current)</span></a>
                      </li>
                      <li class="nav-item">
-                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
+                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1"><strong>펫시터</strong></a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
+                         <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1"><strong>갤러리</strong></a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
+                         <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1"><strong>자유게시판</strong></a>
                      </li>
                      <li class="nav-item" id="searchBox">
                          <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
@@ -180,8 +184,8 @@ $(function() {
                      </li>
                  </ul>
                    <form class="form-inline my-2 my-lg-0" id="loginNavi">
-                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.ad">관리자</a>
-                     <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
+                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.ad"><strong>관리자</strong></a>
+                     <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem"><strong>로그아웃</strong></a>
                    </form>
               </div>
             </nav>
@@ -197,16 +201,18 @@ $(function() {
 		        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
 			    	<ul class="navbar-nav mr-auto">
 			            <li class="nav-item active">
-			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+			            	<strong>산책장소</strong>
+			            	<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
+			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1"><strong>펫시터</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
+			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1"><strong>갤러리</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
+			                <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1"><strong>자유게시판</strong></a>
 			            </li>
 			            <li class="nav-item" id="searchBox">
 			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
@@ -214,8 +220,8 @@ $(function() {
 			            </li>
 			        </ul>
           			<form class="form-inline my-2 my-lg-0" id="loginNavi">
-			            <a class="mr-sm-2" style="width:75px;" href="Mypage.mem">마이페이지</a>
-			            <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
+			            <a class="mr-sm-2" style="width:75px;" href="Mypage.mem"><strong>마이페이지</strong></a>
+			            <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem"><strong>로그아웃</strong></a>
 		          	</form>
         		</div>
      		 </nav>
@@ -392,31 +398,52 @@ $(function() {
    </div>
 
    <!-- 우리동네 플래너 -->  <!-- 청아님 여기에 원하시는거 작성하시면 될 것 같습니다!  -->
-   <section class="ftco-section" style="overflow:hidden;padding-top:80px;padding-bottom:80px;">
-      <div class="container" style="border:1px solid black">
+   <section class="ftco-section" style="overflow:hidden;">
+      <div class="container">
          <div class="row justify-content-center pb-5 mb-3">
             <div class="col-md-7 heading-section text-center ftco-animate">
-               <h2 style="border: 1px;">우리동네  walking  플래너</h2>
+               <h2>우리동네  walking  플래너</h2>
                <hr style="height: 0.2rem; max-width:250px; margin:15px auto; background-color: #146c43; opacity: 1;">
             </div>
          </div>
-         <div class="row">
-         	<div class="col-6">
-         		<img src="walkplanner.jpg">
-         		<strong>
-         			
-         		</strong>
+         <div class="row m-0 mb-5">
+         	<img src="walkplanner.JPG" class="col-8 p-0">
+         	<div class="col-4 p-3 pt-4">
+         		<p style="color:black;"><strong>
+         			우리동네 산책일정을 한눈에 확인 할 수 있어요!
+         		</strong></p>	
+         		<p style="color:#146c43;"><strong>내 일정은 green!</strong></p>
+         		<p style="color:tomato;">
+         			<strong>사람이나 강아지를 보고 짖고, 법정 지정 맹견인<br>조금 같이 산책하기 어려운 강아지들의 일정은 red!
+         			</strong>
+         		</p>
+         		<p style="color:royalblue;"><strong>우리동네 다른 반려인들의 일정은 blue!</strong></p>
+				<p style="color:black;" class="mb-5"><strong>내 일정을 확인하고, 수정, 삭제할 수 있고<br>
+				 오늘 +4일의 날씨와 미세먼지농도까지 확인 할 수 있는<br>
+				 Smart한 나만의 산책 Planner를 경험해 보세요😍</strong></p>
+				 <p class="mb-0"><strong>✨지도를 통해서 산책 장소 위치까지 확인 가능✨</strong></p>
          	</div>
-         	<div class="col-6">
-         		<img src="history.jpg">
-         		<strong>
-         			
+         </div>	
+         <div class="row m-0 pt-5" style="border-top:2px solid #146c43;">
+         	<div class="col-3 p-2 pt-4">
+         		<p><strong>
+         			산책 히스토리🐾를 통해서<br>
+         			같이 산책했던 반려인이나 펫시터분들의<br>
+         			일정과 정보를 확인 할 수 있습니다!
          		</strong>
+         		</p>
+         		<p style="color:black;" class="mb-0"><strong>
+         			맘에 들었던 분들에게<br>
+         			또 같이 산책일정을 잡거나<br>
+         			다시 펫시터를 해달라고 쪽지를 보내<br>
+         			일정을 잡을 수 있습니다💌
+         		</strong></p>
          	</div>
-         </div>
-      </div>
+         	<img src="history.JPG" class="col-9 p-0">
+		</div>
+	</div>
    </section>
-
+       
    <!--갤러리  -->
    <section class="ftco-section bg-light">
       <div class="container">
@@ -679,9 +706,6 @@ $(function() {
          </div>
       </div>
    </footer>
-
-
-
 
    <!-- loader -->
    <div id="ftco-loader" class="show fullscreen">

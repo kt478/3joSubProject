@@ -560,7 +560,7 @@
         </div>
         
         <div class="footer">
-            <h3 style="text-align:left;">산책 히스토리</h3>
+            <h3 style="text-align:left;">산책 히스토리🐾</h3>
 	<c:choose>
 		<c:when test="${history == null }">
 		 	<div class="rounded historylist">최근 3개월간 산책 히스토리가 없습니다.</div>
