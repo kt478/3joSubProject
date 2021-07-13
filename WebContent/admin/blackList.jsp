@@ -1,24 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판</title>
+<title>관리자_블랙리스트</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 
 <style>
-/* 글씨체 적용 */
-* {font-family: 'Sunflower';}
 
+* {font-family: 'Sunflower'; box-sizing: border-box;}
 /* 페이지전체 navi Style 부분 시작 */
     #navibar{
         background-color:white;
@@ -48,55 +51,23 @@
         left: 30px;
         display: none;
     }
-/* 페이지전체 navi Style 부분 끝 */
+/* 페이지전체 navi Style 부분 끝 */    
 
-/* 게시판 사이즈 */
-.container {max-width: 900px; margin: 50px auto;}
-.page_nav {position: absolute; left: 50%; top: calc(50% + 0.475rem); transform: translate(-50%, -50%); margin-left: 20px;}
-.table {table-layout: fixed;}
-.table thead {background-color: #f2f2f2;}
-.table thead th {border-bottom: none;}
-.table td, .table th {border-color: #ddd;}
-.table td {word-wrap: break-word; position: relative;}
-tfoot {position: relative;}
+/* side navi style */
+.side_menu{position:fixed; top:150px; width:250px;}
+.list-group{height:100px;}
+.list-group-item{padding:0px;}
+.admin_menu{width:100%; height:200px; text-align:center; line-height:200px;}
 
-
-/* 메인 내비바 아래 제목 공간 */
-#temp {
-	margin-bottom: 50px;
-	width: 100%;
-	height: 300px;
-	background-color: #c8e3c4;
-	line-height: 150px;
-	font-size: 40px;
-	font-style: initial;
-	font-weight: 600;
-}
-
-/* 게시판 페이지 내비 */
-ul {list-style: none;}
-li {float: left;}
-a:link {text-decoration: none; color: black;}
-a:visited {text-decoration: none; color: black;}
-a:active {text-decoration: none; color: black;}
-a:hover {text-decoration: none; color: black;}
-#boardNavi ul li {display: inline-block;}
-#boardNavi ul li.active a {background: #fff; color: grey; border: 1px solid gainsboro;}
-
-/* 게시판 검색 */
-#searchBoard {color: white;}
-select {border-radius: 5px; height: 30px; border-color: #c8e3c4; color: green;}
-input[name="keyword"] {border-color: #c8e3c4;border-radius: 5px;}
-#searchBoardBtn {border-radius: 5px; height: 30px; border-color: #c8e3c4; color: green; background-color: white;}
-.add {text-align: center; border-radius: 10px;}
-
-p {position:absolute; top:200px; left:300px; color: white;}
+/* 블랙리스트 */
+body {background-color: white; border-color: black;}
+.row div{text-align:center;}
+.container {box-sizing: border-box;}
 
 </style>
 
 <script>
 	$(function() {
-
 		// 네비바 검색창 보이게
 		$("#searchImg").on("click", function() {
 			$("#search").show("slow");
@@ -117,29 +88,44 @@ p {position:absolute; top:200px; left:300px; color: white;}
 		// 네비바 비회원일 경우 로그인 페이지로 일괄 보내기.
 		$(".beforelogin, #read_more_pet").on("click",function(){
 			var result = confirm("로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?");
-		    if(result){
-		    	location.href = "Signup/login.jsp";
-		   	}
-		})         
-
-		// 글 작성 화면 이동
-		$("#write").on("click", function() {
-			location.href = "board/boardWrite.jsp";
-		})
+			if(result){
+				location.href = "Signup/login.jsp";
+			}
+		})  
 		
-		// 공지사항 스타일 적용
-		$("div[class='row']:contains('admin')").css({
-			background : "#c8e3c4"
-		});
-
-	})
+		
+		//삭제버튼
+      $(".block_reg").on("click",function() {
+               $(".block_id").val($(this).parent().siblings(".mem_id").text());
+               $(".block_name").val($(this).parent().siblings(".mem_name").text());
+               $(".block_email").val($(this).parent().siblings(".mem_email").text());
+               $(".block_contact").val($(this).parent().siblings(".mem_contact").text());
+               $("#block_reg_form").submit();
+               
+            })
+            
+            
+            /* $("#blacklistshowup").on("click",function(){
+               var box1 = document.getElementById("BlackListView");
+               var box2 = document.getElementById("BlackListView2");
+               
+               
+            if(box1.style.display=="none"||box2.style.display=="none"){   
+               $("#BlackListView").css("display","block");
+               $("#BlackListView2").css("display","block");
+            }
+            else if(box1.style.display=="block"||box2.style.display=="block"){
+               $("#BlackListView").css("display","none");
+               $("#BlackListView2").css("display","none"); */
+            }
+		})
+   })
 </script>
 
 </head>
-
 <body>
 
-	<!-- 페이지 전체 navi -->
+<!-- 페이지 전체 navi -->
 	<c:choose>
 		<c:when test="${login.id==null}"> <!-- 로그인 전 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-white" id="navibar">
@@ -189,7 +175,7 @@ p {position:absolute; top:200px; left:300px; color: white;}
                         <a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
                      </li>
                      <li class="nav-item">
-                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
+                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">팻시터</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
@@ -223,7 +209,7 @@ p {position:absolute; top:200px; left:300px; color: white;}
 			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
+			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">팻시터</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
@@ -237,82 +223,108 @@ p {position:absolute; top:200px; left:300px; color: white;}
 			            </li>
 			        </ul>
           			<form class="form-inline my-2 my-lg-0" id="loginNavi">
-			            <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/Mypage.mem">마이페이지</a>
+			            <a class="mr-sm-2" style="width:75px;" href="Mypage.mem">마이페이지</a>
 			            <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
 		          	</form>
         		</div>
      		 </nav>
 		</c:otherwise>
 	</c:choose>
-
-	<!-- 메인 내비바 아래 공간 -->
-	<div class="container-fluid" id="temp" style="background-image: url('board/b6.webp');"><p>자유게시판</p></div>
-
-	<!-- 검색창 및 글쓰기 버튼 -->
-	<div class="container" id="searchBoard">
-		<form action="listProc.fb" method="get">
-			<input type="hidden" name="cpage" value="1"> 
-			<select name="category">
-				<option value="title">제목</option>
-				<option value="writer">작성자</option>
-			</select> 
-			<input type="text" name="keyword" placeholder="검색어를 입력하세요.">
-			<input type="submit" id="searchBoardBtn" value="검색">
-			<button id="write" type="button" class="btn btn-success float-right">글쓰기</button>
-		</form>
-	</div>
-
-	<!-- 게시판 목록 출력 -->
-	<div class="container">
-		<c:forEach var="list" items="${list}">
-			<div class="container add shadow-sm p-3 mb-5 bg-white rounded" style="border: 1px solid black; padding: 10px;">
-				<div class="row">
-					<div class="col-3">${list.seq}</div>
-					<div class="col-6">writer : ${list.writer}</div>
-					<div class="col-3">view : ${list.view_count}</div>
-				</div>
-				<hr>
-				<div class="row add">
-					<div class="col-3">
-						${list.write_date}
-					</div>
-					<div class="col-9" style="font-size: large;">
-						<a href="${pageContext.request.contextPath}/viewProc.fb?seq=${list.seq}" style="text-align: center;">${list.title}</a>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-	</div>
-
-	<!-- 게시판 페이지 내비 -->
-	<nav aria-label="Page navigation example" id="boardNavi">
-		<ul class="pagination justify-content-center">
-			<c:forEach var="i" items="${navi}" varStatus="s">
-				<c:choose>
-					<c:when test="${i == '>'}">
-						<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}"
-							id="rightNavi">${i}</a></li>
-					</c:when>
-
-					<c:when test="${i == '<'}">
-						<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}"
-							id="leftNavi">${i}</a></li>
-					</c:when>
-
-					<c:otherwise>
-						<li class="page-item active">
-						<a class="page-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=${i}&category=${category}&keyword=${keyword}"
-							id="centerNavi">${i}</a></li>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
+	
+	
+<!-- side navi -->
+	<div class="container side_menu">
+		<ul class="list-group">
+  			<li class="list-group-item">
+  				<a href="${pageContext.request.contextPath}/memberList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">회원 명단</a>
+			</li>
+  			<li class="list-group-item">
+  				<a href="${pageContext.request.contextPath}/questionList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">쪽지함</a>
+ 			 </li>
+  			<li class="list-group-item">
+  				<a href="${pageContext.request.contextPath}/blackList.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup">블랙리스트 명단</a></li>
+  			</li>
 		</ul>
-	</nav>
+	</div>
+	
 
-	<!-- footer 여백 만듦 -->
-	<div class="container-fluid" style="width: 100%; height: 100px; background-color: white;"></div>
-		
+<!-- 블랙리스트 -->
+   <div class="container-lg border p-0" id="BlackListView"
+      style="/* display:none; */width: 1600px; height: 500px; margin-left: 250px; margin-top: 50px; box-sizing: border-box">
+      <h3 style="text-align: center">가입 회원 정보 조회</h3>
+
+      <div class="row m-0" style="box-sizing: border-box">
+
+         <div class="border col-lg-1 col-xl-1">아이디</div>
+         <div class="border col-lg-2 col-xl-2">이메일</div>
+         <div class="border col-lg-1 col-xl-1">이름</div>
+         <div class="border col-lg-1 col-xl-1">연령대</div>
+         <div class="border col-lg-2 col-xl-2">연락처</div>
+         <div class="border col-lg-1 col-xl-1">가입날짜</div>
+         <div class="border col-lg-3 col-xl-2">강제탈퇴사유설정</div>
+         <div class="border col-lg-2 col-xl-2">강제 탈퇴</div>
+
+      </div>
+
+      <c:forEach var="mem" items="${Member}">
+         <form action="${pageContext.request.contextPath}/block_member.mem"
+            method="post" id="block_reg_form">
+            <div class="row m-0" style="box-sizing: border-box">
+               <div class="border col-lg-1 col-xl-1 mem_id">${mem.id}</div>
+               <div class="border col-lg-2 col-xl-2 mem_email">${mem.email}</div>
+               <div class="border col-lg-1 col-xl-1 mem_name">${mem.person_name}</div>
+               <div class="border col-lg-1 col-xl-1">${mem.person_age}</div>
+               <div class="border col-lg-2 col-xl-2 mem_contact">${mem.contact}</div>
+               <div class="border col-lg-1 col-xl-1">${mem.reg_date}</div>
+               <div class="border col-lg-3 col-xl-2">
+                  <select name="block_reason">
+                     <option value="타 회원 비방 및 욕설">타 회원 비방 및 욕설</option>
+                     <option value="불법적인 경로로 가입">불법적인 경로로 가입</option>
+                     <option value="불법적인/선정적인 게시물 게시">불법적/선정적인 게시물 게시</option>
+                  </select>
+               </div>
+               <div class="border col-lg-2 col-xl-2">
+                  <input type="button" value="블랙리스트로 등록" class="block_reg">
+               </div>
+               <input type=hidden name="id" class="block_id" value=""> <input
+                  type=hidden name="name" class="block_name" value=""> <input
+                  type=hidden name="contact" class="block_contact" value="">
+               <input type=hidden name="email" class="block_email" value="">
+            </div>
+         </form>
+      </c:forEach>
+   </div>
+
+   <div class="container-lg border p-0" id="BlackListView2"
+      style="/* display:none; */ width: 1600px; height: 500px; margin-left: 250px; margin-top: 170px; box-sizing: border-box">
+      <h3 style="text-align: center">블랙리스트 회원 조회</h3>
+
+      <div class="row m-0" style="box-sizing: border-box; margin: auto;">
+         <div class="border col-lg-1 col-xl-1">번호</div>
+         <div class="border col-lg-1 col-xl-1">아이디</div>
+         <div class="border col-lg-2 col-xl-2">이메일</div>
+         <div class="border col-lg-1 col-xl-1">이름</div>
+         <div class="border col-lg-2 col-xl-2">연락처</div>
+         <div class="border col-lg-3 col-xl-2">강제 탈퇴 사유</div>
+         <div class="border col-lg-1 col-xl-1">강제 탈퇴 날짜</div>
+
+      </div>
+
+      <div class="row m-0" style="box-sizing: border-box">
+
+         <c:forEach var="blocked" items="${BlackList}">
+         
+            <div class="border col-lg-1 col-xl-1">${blocked.seq}</div>
+            <div class="border col-lg-1 col-xl-1">${blocked.id}</div>
+            <div class="border col-lg-2 col-xl-2">${blocked.email}</div>
+            <div class="border col-lg-1 col-xl-1">${blocked.name}</div>
+            <div class="border col-lg-2 col-xl-2">${blocked.contact}</div>
+            <div class="border col-lg-3 col-xl-2">${blocked.block_reason}</div>
+            <div class="border col-lg-1 col-xl-1">${blocked.block_date}</div>
+
+         </c:forEach>
+      </div>
+   </div>
+
 </body>
 </html>
