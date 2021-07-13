@@ -402,13 +402,13 @@ $(function() {
          </div>
          <div class="row">
          	<div class="col-6">
-         		<img src="walkplanner.jpg">
+         		<img src="walkplanner.JPG">
          		<strong>
          			
          		</strong>
          	</div>
          	<div class="col-6">
-         		<img src="history.jpg">
+         		<img src="history.JPG">
          		<strong>
          			
          		</strong>
