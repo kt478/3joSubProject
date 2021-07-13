@@ -1,13 +1,19 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import config.SearchMapConfig;
 import dao.CosDAO;
@@ -131,6 +137,132 @@ public class CosController extends HttpServlet {
 
 
 			}
+			//관리자 기능
+				else if(cmd.contentEquals("/input.cos")) {
+				
+				String directory = request.getServletContext().getRealPath("map/img");
+				
+				File filesFolder = new File(directory);
+				int maxSize = 1024 * 1024 * 10; // 기본단위 바이트  / maxSize = 10메가 바이트
+				
+				if(!filesFolder.exists()) filesFolder.mkdir();
+				MultipartRequest multi = new MultipartRequest(request,directory,maxSize,"utf8",new DefaultFileRenamePolicy());
+				
+				Enumeration files = multi.getFileNames();
+				String str = (String)files.nextElement();
+				String lostFileRealName = multi.getFilesystemName(str);//실제 서버에 업로드가 된네임
+				
+				
+				String course_area = multi.getParameter("local");
+				String course_name = multi.getParameter("course_name");
+				String address1 = multi.getParameter("address1");
+				String postcode = multi.getParameter("postcode");
+				String explain = multi.getParameter("explain");
+				String ex_time = multi.getParameter("ex_time");
+				String ex_way = multi.getParameter("ex_way");
+		        
+		            Set<String> fileNames = multi.getFileNameSet();  // file이 여러개가 있을 수가 있기때문에 for문을 돌려서 일일히 맞는지 확인용도
+					for(String fileName : fileNames) {
+						String oriName = multi.getOriginalFileName(fileName);
+						String sysName = multi.getFilesystemName(fileName);
+						
+						if(oriName != null) {
+						System.out.println(oriName +" 파 일 에 저 장");
+						dao.insert(new CosDTO(0,course_area,course_name,address1,postcode,oriName,sysName,explain,ex_time,ex_way));
+						}
+					}
+					List<CosDTO> list = dao.getAllList();
+					for(CosDTO dto : list) {
+						System.out.println(dto.getOriName());
+					}
+					System.out.println(list);
+					System.out.println("저장완료");
+				
+					response.sendRedirect("cosList.cos?cpage=1");
+				}else if(cmd.contentEquals("/delete.cos")) {
+	
+					String directory = request.getServletContext().getRealPath("map/img");
+					
+					File filesFolder = new File(directory);
+					int maxSize = 1024 * 1024 * 10; // 기본단위 바이트  / maxSize = 10메가 바이트
+					
+					MultipartRequest multi = new MultipartRequest(request,directory,maxSize,"utf8",new DefaultFileRenamePolicy());
+					
+					String course_name = multi.getParameter("course_name");
+					System.out.println("삭제할 : "+course_name);
+					
+					
+							String sysName = dao.getSysName(course_name);
+							System.out.println("사진 이름 :"+sysName);
+							if(sysName !=null) {
+							File targetFile = new File(directory+"/"+sysName);
+							boolean result = targetFile.delete(); // 실제 파일지우는 기능
+							dao.delete(course_name); 
+							}else {
+								int result = dao.delete(course_name);
+							}
+							
+							response.sendRedirect("cosList.cos?cpage=1");
+					
+				}else if(cmd.contentEquals("/cosList.cos")) {
+					
+					
+					int cpage = Integer.parseInt(request.getParameter("cpage"));
+					String keyWord = request.getParameter("keyWord");
+					
+					int endNum=cpage*SearchMapConfig.RECORD_COUNT_PER_PAGE;
+					int startNum =endNum -(SearchMapConfig.RECORD_COUNT_PER_PAGE-1);
+					
+					List<CosDTO> list;
+					if(keyWord!=null) {
+						list = dao.getPageList(startNum,endNum,keyWord);
+						
+					}else {
+						list = dao.getPageList(startNum,endNum);
+					}
+					List<String> pageNavi = dao.getPageNavi(cpage,keyWord);
+					
+					request.setAttribute("cpage", cpage);
+					request.setAttribute("keyWord", keyWord);
+					request.setAttribute("list", list);
+					request.setAttribute("navi", pageNavi);
+					request.getRequestDispatcher("map/admin/list.jsp").forward(request, response);
+					
+					
+					
+					
+					
+				}else if(cmd.contentEquals("/detail.cos")) {
+					String course_name = request.getParameter("course_name");
+					System.out.println(course_name);
+					CosDTO list = dao.getSearchList(course_name);
+					System.out.println(list);
+					request.setAttribute("list", list);
+					request.getRequestDispatcher("map/admin/listDetail.jsp").forward(request, response);
+				}else if(cmd.contentEquals("/update.cos")) {
+					
+					String directory = request.getServletContext().getRealPath("map/img");
+					
+					File filesFolder = new File(directory);
+					int maxSize = 1024 * 1024 * 10; // 기본단위 바이트  / maxSize = 10메가 바이트
+					
+					MultipartRequest multi = new MultipartRequest(request,directory,maxSize,"utf8",new DefaultFileRenamePolicy());
+					
+					int seq = Integer.parseInt(multi.getParameter("seq"));
+					String course_area = multi.getParameter("course_area");
+					String course_name = multi.getParameter("course_name");
+					String address1 = multi.getParameter("address1");
+					String postcode = multi.getParameter("postcode");
+					String explain = multi.getParameter("explain");
+					String ex_time = multi.getParameter("ex_time");
+					String ex_way = multi.getParameter("ex_way");
+					
+					dao.update(new CosDTO(seq,course_area,course_name,address1,postcode,null,null,explain,ex_time, ex_way));
+					
+					response.sendRedirect("cosList.cos?cpage=1");
+				}else if(cmd.contentEquals("/listSearch.cos")) {
+					
+				}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

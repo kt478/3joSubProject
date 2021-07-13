@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -210,6 +211,29 @@ public class CosDAO {
 			
 		}
 	}
+	public List<CosDTO> getPageList(int startNum,int endNum)throws Exception{
+		String sql="select * from "
+				+ "(select row_number() over(order by seq desc) rnum,course_area,course_name,address1,postcode,oriName from course) "
+				+ "where rnum between ? and ?";
+		try(Connection con= this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				){
+			pstat.setInt(1, startNum);
+			pstat.setInt(2, endNum);
+			try(ResultSet rs=pstat.executeQuery();){
+				List<CosDTO> list = new ArrayList<>();
+				while(rs.next()) {
+					String course_area = rs.getString("course_area");
+					String course_name = rs.getString("course_name");
+					String address1 = rs.getString("address1");
+					String postcode = rs.getString("postcode");
+					String oriName= rs.getString("oriName");
+					list.add(new CosDTO(0,course_area,course_name,address1,postcode,oriName,null,null,null,null));
+				}
+				return list;
+			}
+		}
+	}
 	
 	public List<CosDTO> getPageList(int startNum,int endNum,String keyword)throws Exception{
 		String sql="select * from "
@@ -238,6 +262,19 @@ public class CosDAO {
 		}
 	}
 	
+	private int getRecordCount() throws Exception {
+		String sql = "select count(*) from course";
+		try (Connection con= this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();
+				){
+			
+			rs.next();
+			return rs.getInt(1);
+			
+		}
+	}
+	
 	private int getRecordCount(String keyword) throws Exception {
 		String sql = "select count(*) from course where course_area like ? or course_name like ? or address1 like ?";
 		try (Connection con= this.getConnection();
@@ -256,8 +293,12 @@ public class CosDAO {
 	public List<String> getPageNavi(int currentPage,String keyword)throws Exception{
 		int recordTotalCount =0;
 		
+		if(keyword==null) {
+			recordTotalCount = this.getRecordCount();
+		}else {
+			recordTotalCount = this.getRecordCount(keyword);
+		}
 		
-		recordTotalCount = this.getRecordCount(keyword);
 		
 		
 		int recordCountPerpage = 10; // 한 페이지당 보여줄 게시글의 개수
@@ -298,6 +339,57 @@ public class CosDAO {
 		if(needNext) {pageNavi.add(">");}
 		return pageNavi;
 	}
+	
+	//관리자 기능
+	
+	
+	public int delete(String course_name)throws Exception {
+		String sql ="delete from course where course_name = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				){
+			pstat.setNString(1,course_name);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+	
+	public String getSysName(String course_name) throws Exception{
+		String sql ="select sysName from course where course_name=?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, course_name);
+			try(ResultSet rs = pstat.executeQuery()){
+				if(rs.next()) {
+				return rs.getString("sysName");
+			}
+			}	
+		}
+		return null;
+	}
+	public int update(CosDTO dto) throws Exception{
+		String sql="update course set course_area=?, course_name=?, address1=?, postcode=?, oriName=?,sysName=?, explain=?, ex_time=?, ex_way=? where seq=?";
+		try(
+				Connection con= this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				){
+			pstat.setString(1, dto.getCourse_area());
+			pstat.setString(2, dto.getCourse_name());
+			pstat.setString(3, dto.getAddress1());
+			pstat.setString(4, dto.getPostcode());
+			pstat.setString(5, dto.getOriName());
+			pstat.setString(6, dto.getSysName());
+			pstat.setString(7, dto.getExplain());
+			pstat.setString(8, dto.getEx_time());
+			pstat.setString(9, dto.getEx_way());
+			pstat.setInt(10, dto.getSeq());
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+	
 	
 	
 }
