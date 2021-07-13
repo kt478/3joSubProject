@@ -406,6 +406,7 @@ $(function() {
                <hr style="height: 0.2rem; max-width:250px; margin:15px auto; background-color: #146c43; opacity: 1;">
             </div>
          </div>
+
          <div class="row m-0 mb-5">
          	<img src="walkplanner.JPG" class="col-8 p-0">
          	<div class="col-4 p-3 pt-4">
@@ -430,6 +431,7 @@ $(function() {
          			산책 히스토리🐾를 통해서<br>
          			같이 산책했던 반려인이나 펫시터분들의<br>
          			일정과 정보를 확인 할 수 있습니다!
+
          		</strong>
          		</p>
          		<p style="color:black;" class="mb-0"><strong>

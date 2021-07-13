@@ -319,10 +319,10 @@
 			<div class="row no-gutters slider-text align-items-end">
 				<div class="col-md-9 ftco-animate pb-5">
 					<p class="breadcrumbs mb-2">
-						<span class="mr-2"><a href="index.html">홈 <i
+						<span class="mr-2"><a href="main.jsp">홈 <i
 								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
-							href="blog.html">갤러리 <i class="ion-ios-arrow-forward"></i></a></span> <span>갤러리
-							디테일 <i class="ion-ios-arrow-forward"></i>
+							href="galList.gal?cpage=1">갤러리 <i class="ion-ios-arrow-forward"></i></a></span> <span>갤러리
+							본문 <i class="ion-ios-arrow-forward"></i>
 						</span>
 					</p>
 					<h1 class="mb-0 bread">갤러리</h1>
