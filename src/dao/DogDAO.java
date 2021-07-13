@@ -151,7 +151,7 @@ public class DogDAO {
 		}
 		
 		public String getFeature (String person_id) throws Exception {
-			String sql = "select dog_feature from dog_info where person_id=?";
+			String sql = "select dog_feature from dog_info where dog_parent_id=?";
 			try(
 					Connection con = this.getConnection();
 					PreparedStatement pstat = con.prepareStatement(sql);

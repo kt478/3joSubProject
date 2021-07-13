@@ -17,8 +17,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb19ef9c7ca2b3edd45d7165c5e47a58&libraries=services"></script> 
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d9db0cb18c536b19f38869f24be5bcf&libraries=services"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
     <script>
         $(function(){
         	//관리자
@@ -160,13 +161,19 @@
 	            	 $("#input_local").val($(this).find(".course_area").text());
             })
 
+            // modal부분.
 			$("#userBtn").on("click",function(){
 				 $("#input_place_name").val($("#ex_cos").html());
             	 $("#div_place_name").html($("#ex_cos").html());
 				
 			     $("#calendarModal").modal("show");
 			   
+			     $("#close1, #close2").on("click",function(){
+			    	 $("#calendarModal").modal("hide");
+			     })
+			     
 			     $("#addCalendar").on("click",function(){
+			    	 alert("");
 			    	 $.ajax({ 
 	            		url:"exam.cos",
 	            		type:"post",
@@ -178,21 +185,20 @@
 	            			alert("일정을 추가 했습니다.");
 	            		}
 	            	})
-			     }) 
+	            	$("#calendarModal").modal("hide");
+			     })
 			})
             
 			$("#btn").on("click",function(){
 				let result = confirm("로그인이 필요한 화면입니다. 로그인 하시겠습니까?")
 				if(result){
-					location.href="signup/login.jsp";
+					location.href="Signup/login.jsp";
 				}
 			})
-			
-
-
         })
     </script>
     <style>
+    * {font-family: 'Sunflower';}
     /* 페이지전체 navi Style 부분 시작 */
     #navibar{
         background-color:white;
@@ -271,7 +277,7 @@
 			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			            	<a class="nav-link beforelogin" href="javascript:;">팻시터</a>
+			            	<a class="nav-link beforelogin" href="javascript:;">펫시터</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link beforelogin" href="javascript:;">갤러리</a>
@@ -305,7 +311,7 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
                      </li>
                      <li class="nav-item">
-                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">팻시터</a>
+                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
@@ -319,7 +325,7 @@
                      </li>
                  </ul>
                    <form class="form-inline my-2 my-lg-0" id="loginNavi">
-                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.admin">관리자</a>
+                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.ad">관리자</a>
                      <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
                    </form>
               </div>
@@ -339,7 +345,7 @@
 			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">팻시터</a>
+			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
@@ -361,9 +367,6 @@
 		</c:otherwise>
 	</c:choose>
 
-    
-    
-    
     <div class="wrapper">
 	    	<div id="side">
 	    	<div id=title>산책코스 추천</div>
@@ -452,9 +455,9 @@
 	            <div class="modal-content">
 	                <div class="modal-header">
 	                    <h5 class="modal-title" id="exampleModalLabel">산책 일정 추가하기</h5>
-	                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	                        <span aria-hidden="true">&times;</span>
-	                    </button>
+	                    	<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close1">
+          						<span aria-hidden="true">&times;</span>
+        					</button>
 	                </div>
 	                <div class="modal-body">
 	                    <div class="form-group">
@@ -473,7 +476,7 @@
 	                </div>
 	                <div class="modal-footer">
 	                    <button type="submit" class="btn btn-warning" id="addCalendar">추가</button>
-	                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="sprintSettingModalClose">취소</button>
+	                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close2">취소</button>
 	                </div>     
 	            </div>
 	        </div>

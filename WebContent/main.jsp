@@ -481,10 +481,7 @@ $(function() {
                            </div>
                         </div>
                      </div>
-                  
-               
-
-                  
+      
                      <div class="col-md-4 d-flex ftco-animate">
                         <div class="blog-entry align-self-stretch"
                            style="width: 350px; height: 500px;">
@@ -513,25 +510,8 @@ $(function() {
                      </div>
                   
                </div>
-
-
-
-
-        
-         
-         
       </div>
    </section>
-
-
-
-
-
-
-
-
-
-
 
 <!--문의하기  -->
    <section
