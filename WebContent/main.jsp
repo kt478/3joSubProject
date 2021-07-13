@@ -116,7 +116,6 @@ $(function() {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
 <!-- 페이지 전체 navi -->
 	<c:choose>
 		<c:when test="${login.id==null}"> <!-- 로그인 전 -->
@@ -167,7 +166,7 @@ $(function() {
                         <a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
                      </li>
                      <li class="nav-item">
-                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">팻시터</a>
+                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
@@ -201,7 +200,7 @@ $(function() {
 			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">팻시터</a>
+			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
@@ -253,7 +252,7 @@ $(function() {
                   <div class="media-body">
                      <h3 class="heading">산책 장소</h3>
                      <p>주변, 혹은 다른 지역의 산책장소 찾기 어려우셨죠? 여러 지역의 산책장소를 둘러보고 마음에 드는
-                        산책로를 선택할 수 있습니다.</p>
+                        산책장소를 선택하고 일정을 추가할 수 있습니다.</p>
                      <a href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구" class="btn-custom d-flex align-items-center justify-content-center">
                      	<span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i>
                      </a>
@@ -331,8 +330,8 @@ $(function() {
                         <span class="flaticon-stethoscope"></span>
                      </div>
                      <div class="text pl-3">
-                        <h4></h4>
-                        <p>강아지와 함께 재밌는 놀이</p>
+                        <h4>산책장소</h4>
+                        <p>다양한 장소의 산책장소를 검색해보세요.</p>
                      </div>
                   </div>
                   <div class="col-md-6 services-2 w-100 d-flex">
@@ -360,8 +359,8 @@ $(function() {
                         <span class="flaticon-veterinarian"></span>
                      </div>
                      <div class="text pl-3">
-                        <h4>언제든지 물어보세요.</h4>
-                        <p>언제든 문의사항을 질문하시면, 빠르게 답변드립니다.</p>
+                        <h4>일정 관리</h4>
+                        <p>우리동네 반려인들의 산책장소와 일정을 공유해보세요!</p>
                      </div>
                   </div>
                </div>
@@ -393,10 +392,27 @@ $(function() {
    </div>
 
    <!-- 우리동네 플래너 -->  <!-- 청아님 여기에 원하시는거 작성하시면 될 것 같습니다!  -->
-   <section class="ftco-section">
-      <div class="container">
+   <section class="ftco-section" style="overflow:hidden;padding-top:80px;padding-bottom:80px;">
+      <div class="container" style="border:1px solid black">
+         <div class="row justify-content-center pb-5 mb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+               <h2 style="border: 1px;">우리동네  walking  플래너</h2>
+               <hr style="height: 0.2rem; max-width:250px; margin:15px auto; background-color: #146c43; opacity: 1;">
+            </div>
+         </div>
          <div class="row">
-         
+         	<div class="col-6">
+         		<img src="walkplanner.jpg">
+         		<strong>
+         			
+         		</strong>
+         	</div>
+         	<div class="col-6">
+         		<img src="history.jpg">
+         		<strong>
+         			
+         		</strong>
+         	</div>
          </div>
       </div>
    </section>
@@ -422,8 +438,6 @@ $(function() {
                                  <div id="writeDate1">
                                     <a href="#" ></a>
                                  </div>
-
-
                               </div>
                               <div class="meta mb-2">
                                  <div id="writer1">
