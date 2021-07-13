@@ -46,6 +46,8 @@
 .btn_wrap {padding-top: 10px; border-top: 1px solid #ddd;}
 #writeForm>h4 {background-color: whitesmoke; margin: 10px; margin-left: 30px; margin-right: 30px;}
 
+p {position:absolute; top:200px; left:300px; color: white;}
+
 </style>
 
 <script>
@@ -69,7 +71,7 @@
 	<div class="container-fluid">
 
 	<!-- 메인 내비바 아래 공간 -->
-	<div class="container-fluid " id="temp" style="background-image: url('board/board.jpg');">자유게시판 글 수정</div>
+	<div class="container-fluid " id="temp" style="background-image: url('board/b6.webp');"><p></p></div>
 
 		<!-- 게시글 수정 -->
 		<div class="container" id="writeForm">

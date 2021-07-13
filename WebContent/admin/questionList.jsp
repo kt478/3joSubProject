@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의하기 목록</title>
+<title>관리자_문의하기 쪽지함</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -68,13 +68,13 @@
 }
 
 /* 게시판 사이즈 */
-.page_nav {position: absolute; left: 50%; top: calc(50% + 0.475rem); transform: translate(-50%, -50%); margin-left: 20px;}
+/* .page_nav {position: absolute; left: 50%; top: calc(50% + 0.475rem); transform: translate(-50%, -50%); margin-left: 20px;}
 .table {table-layout: fixed;}
 .table thead {background-color: #f2f2f2;}
 .table thead th {border-bottom: none;}
 .table td, .table th {border-color: #ddd;}
 .table td {word-wrap: break-word; position: relative;}
-tfoot {position: relative;}
+tfoot {position: relative;} */
 
 /* 게시판 페이지 내비 */
 ul {list-style: none;}
@@ -83,9 +83,11 @@ a:link {text-decoration: none; color: black;}
 a:visited {text-decoration: none; color: black;}
 a:active {text-decoration: none; color: black;}
 a:hover {text-decoration: none; color: black;}
-#boardNavi{float:right;}
+/* #boardNavi{position:absolute; top:150px; left:300px;} */
 #boardNavi ul li {display: inline-block;}
 #boardNavi ul li.active a {background: #fff; color: grey; border: 1px solid gainsboro;}
+
+span{font-size:30px; font-weight:600; background-color:#c8e3c4;}
 
 </style>
 
@@ -236,19 +238,19 @@ a:hover {text-decoration: none; color: black;}
   				<a href="${pageContext.request.contextPath}/memberList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">회원 명단</a>
 			</li>
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/questionList.ask?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">쪽지함</a>
+  				<a href="${pageContext.request.contextPath}/questionList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">쪽지함</a>
  			 </li>
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/adminMain.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup">블랙리스트 명단</a></li>
+  				<a href="${pageContext.request.contextPath}/blackList.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup">블랙리스트 명단</a></li>
   			</li>
 		</ul>
 	</div>
 
-	<!-- 메인 내비바 아래 공간 -->
-	<div class="container-fluid" id="temp"></div>
 
 	<!-- 문의하기 쪽지함 목록 -->
-	<div class="container" style="text-align:center; float:right;">
+	
+	<div class="container" style="text-align:center; position:absolute; top:150px; left:300px;">
+		<span>문의하기 쪽지함</span><hr>
 		<c:forEach var="list" items="${list}" varStatus="">
 			<div class="container form shadow-sm p-3 mb-5 bg-white rounded" 
 				style="border: 1px solid grey; padding: 10px; text-align:center; border-radius:5px; margin-bottom:10px;">
@@ -261,7 +263,7 @@ a:hover {text-decoration: none; color: black;}
 				<div class="row">
 					<div class="col">날짜 : ${list.ask_date}</div>
 					<div class="col">카테고리 : ${list.type}</div>
-					<div class="col"><a href="${pageContext.request.contextPath}/questionDelete.ask?seq=${list.seq}">
+					<div class="col"><a href="${pageContext.request.contextPath}/questionDelete.ad?seq=${list.seq}">
 						<button class="btn btn-outline-info btn-sm delete">삭제</button></a></div>
 				</div>
 				<hr>
@@ -269,36 +271,36 @@ a:hover {text-decoration: none; color: black;}
 					<div class="col">내용 : ${list.contents}</div>
 				</div>
 			</div>
-			
-		</c:forEach>				
+		</c:forEach>
+		<!-- 페이지 내비 -->
+		<div class="container">
+			<nav aria-label="Page navigation example" id="boardNavi" style="position:absolute; left:550px;">
+				<ul class="pagination">
+					<c:forEach var="i" items="${navi}" varStatus="s">
+						<c:choose>
+							<c:when test="${i == '>'}">
+								<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath}/questionList.ad?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}"
+									id="rightNavi">${i}</a></li>
+							</c:when>
+		
+							<c:when test="${i == '<'}">
+								<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath}/questionList.ad?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}"
+									id="leftNavi">${i}</a></li>
+							</c:when>
+		
+							<c:otherwise>
+								<li class="page-item active">
+								<a class="page-link" href="${pageContext.request.contextPath}/questionList.ad?cpage=${i}&category=${category}&keyword=${keyword}"
+									id="centerNavi">${i}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</ul>
+			</nav>		
+		</div>		
 	</div>
-
-	<!-- 페이지 내비 -->
-	<nav aria-label="Page navigation example" id="boardNavi">
-		<ul class="pagination justify-content-center">
-			<c:forEach var="i" items="${navi}" varStatus="s">
-				<c:choose>
-					<c:when test="${i == '>'}">
-						<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath}/questionList.ask?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}"
-							id="rightNavi">${i}</a></li>
-					</c:when>
-
-					<c:when test="${i == '<'}">
-						<li class="page-item">
-						<a class="page-link" href="${pageContext.request.contextPath}/questionList.ask?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}"
-							id="leftNavi">${i}</a></li>
-					</c:when>
-
-					<c:otherwise>
-						<li class="page-item active">
-						<a class="page-link" href="${pageContext.request.contextPath}/questionList.ask?cpage=${i}&category=${category}&keyword=${keyword}"
-							id="centerNavi">${i}</a></li>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-		</ul>
-	</nav>
 
 	<!-- footer 여백 만듦 -->
 	<div class="container-fluid" style="width: 100%; height: 100px; background-color: white;"></div>

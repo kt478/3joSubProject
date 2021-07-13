@@ -35,6 +35,8 @@
 	font-weight: 600;
 }
 
+p {position:absolute; top:200px; left:300px; color: white;}
+
 /* 게시글 작성 폼 */
 .title {overflow: hidden; padding-bottom: 10px; border-bottom: 5px solid seagreen;}
 .title h3 input {border: none;}
@@ -67,7 +69,7 @@
 	<div class="container-fluid">
 
 	<!-- 메인 내비바 아래 공간 -->
-	<div class="container-fluid " id="temp" style="background-image: url('board/board.jpg');">자유게시판 글 작성</div>
+	<div class="container-fluid " id="temp" style="background-image: url('board/b6.webp');"><p></p></div>
 
 		<!-- 게시글 작성 -->
 		<div class="container" id="writeForm">
