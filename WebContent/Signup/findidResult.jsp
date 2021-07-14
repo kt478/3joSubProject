@@ -95,18 +95,23 @@
 
 							<c:otherwise>
 								<!-- 아이디가 존재하지 않을때 -->
-							
+
 								<div class="form-group" style="margin-top: 20px;">
 
 									<div style="text-align: center">
 										<h3>회원 정보가 존재하지 않습니다.</h3>
-										
+
 									</div>
 								</div>
 
-								<a href="${pageContext.request.contextPath}/Signup/idfind.jsp"><h3 style="text-align:center"; >아이디 찾기로  이동</h3></a>
-								<a href="${pageContext.request.contextPath}/Signup/signupView.jsp"><h3 style="text-align:center">회원가입으로 이동</h3></a>
-
+								<a href="${pageContext.request.contextPath}/Signup/Idfind.jsp"><h3
+										style="text-align: center"; >아이디 찾기로 이동</h3></a>
+								<a
+									href="${pageContext.request.contextPath}/Signup/signupView.jsp"><h3
+										style="text-align: center">회원가입으로 이동</h3></a>
+								<a
+									href="${pageContext.request.contextPath}/main.jsp"><h3
+										style="text-align: center">홈 화면으로 이동</h3></a>
 							</c:otherwise>
 
 						</c:choose>

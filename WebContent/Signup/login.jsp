@@ -26,6 +26,9 @@
 <!-- Main css -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/Signup/css/style.css">
+	<style>
+	
+	</style>
 <script>
 $(function(){
 	
