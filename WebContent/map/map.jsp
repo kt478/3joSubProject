@@ -379,6 +379,7 @@
 		</c:otherwise>
 	</c:choose>
 
+<!-- 산책장소 시작 -->
     <div class="wrapper">
 	    	<div id="side">
 	    	<div id=title>산책코스 추천</div>
