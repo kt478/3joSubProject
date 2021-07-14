@@ -410,16 +410,16 @@
 			<form method="post" id="comForm">
 
 
-				<div class="container"
+				<div class="container col-12 col-lg-12 col-xl-12 p-0"
 					style="overflow: hidden; width: 800px; margin: auto; border: 1px solid #ddd; border-radius: 10px;"
 					id=comment>
 
-					<div class="header" style="background-color: white;">ID :
+					<div class="header col-12 col-lg-12 col-xl-12 p-0" style="background-color: white;">ID :
 						${login.id}</div>
-					<div class="content" style="width: 770px; height: 110px;">
+					<div class="content col-12 col-lg-12 col-xl-12 p-0" style="width: 770px; height: 110px;">
 						<textarea
 							style="height: 100%; width: 100%; border: 1px solid black; border-radius: 10px;"
-							name="comments" id=comments placeholder="댓글을 입력해주세요." class="col-12 col-lg-12 col-xl-12 p-0" required></textarea>
+							name="comments" id=comments placeholder="댓글을 입력해주세요." class="content col-12 col-lg-12 col-xl-12 p-0" required></textarea>
 						<input type=hidden value=${content.seq } name=gallery_seq> 
 
 					</div>
@@ -427,7 +427,7 @@
 					<hr>
 					<div class="reply">
 						<button id=btn class="btn btn-primary"
-							style="float: right; margin-bottom: 10px">등록</button>
+							style="float: right; margin-bottom: 10px; margin-right:10px;">등록</button>
 					</div>
 
 
@@ -448,7 +448,7 @@
 
 
 				<form action="" method=get class=commentForm>
-					<div class="container"
+					<div class="container col-12 col-lg-12 col-xl-12 p-0"
 						style="overflow: hidden; width: 800px; margin: auto;" id=comment>
 
 						<div class="header" style="background-color: white;">ID :
@@ -459,7 +459,7 @@
 
 						<hr>
 
-						<div class="reply">
+						<div class="reply" >
 
 							<button type="button" id=del class="btn btn-primary"
 								style="float: right; margin-bottom: 10px; margin-left: 10px;">삭제</button>
