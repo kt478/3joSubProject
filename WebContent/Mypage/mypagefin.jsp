@@ -206,7 +206,7 @@ h5:hover{font-weight:700;}
                 	<c:otherwise>
                 		<div class="col-12 p-5">
                 			<div class="btn btn-outline-success w-100 h-100" id="adddog">
-                				<h4 class="m-0">🐶강아지 정보추가🐶</h4>
+                				<a href="${pageContext.request.contextPath}/Signup/doginfo.jsp"><h4 class="m-0">🐶강아지 정보추가🐶</h4></a>
                 			</div>
                 		</div>
                 	</c:otherwise>
