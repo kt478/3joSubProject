@@ -116,9 +116,9 @@ body {background-color: white; border-color: black;}
             }
             else if(box1.style.display=="block"||box2.style.display=="block"){
                $("#BlackListView").css("display","none");
-               $("#BlackListView2").css("display","none"); */
+               $("#BlackListView2").css("display","none"); 
             }
-		})
+		}) */
    })
 </script>
 
@@ -302,21 +302,21 @@ body {background-color: white; border-color: black;}
    </div>
 
    <div class="container-lg border p-0" id="BlackListView2"
-      style="/* display:none; */ width: 1600px; height: 500px; margin-left: 250px; margin-top: 170px; box-sizing: border-box">
+      style="/* display:none; */ text-align:center; width: 1600px; height: 500px; margin-left: 250px; margin-top: 170px; box-sizing: border-box">
       <h3 style="text-align: center">블랙리스트 회원 조회</h3>
 
-      <div class="row m-0" style="box-sizing: border-box; margin: auto;">
+      <div class="row m-0" style="box-sizing: border-box; margin-left:550px; text-align:center'">
          <div class="border col-lg-1 col-xl-1">번호</div>
          <div class="border col-lg-1 col-xl-1">아이디</div>
          <div class="border col-lg-2 col-xl-2">이메일</div>
          <div class="border col-lg-1 col-xl-1">이름</div>
          <div class="border col-lg-2 col-xl-2">연락처</div>
-         <div class="border col-lg-3 col-xl-2">강제 탈퇴 사유</div>
-         <div class="border col-lg-1 col-xl-1">강제 탈퇴 날짜</div>
+         <div class="border col-lg-3 col-xl-3">강제 탈퇴 사유</div>
+         <div class="border col-lg-1 col-xl-2">강제 탈퇴 날짜</div>
 
       </div>
 
-      <div class="row m-0" style="box-sizing: border-box">
+      <div class="row m-0" style="box-sizing: border-box; text-align:center; margin-left:550px; text-align:center">
 
          <c:forEach var="blocked" items="${BlackList}">
          
@@ -325,8 +325,8 @@ body {background-color: white; border-color: black;}
             <div class="border col-lg-2 col-xl-2">${blocked.email}</div>
             <div class="border col-lg-1 col-xl-1">${blocked.name}</div>
             <div class="border col-lg-2 col-xl-2">${blocked.contact}</div>
-            <div class="border col-lg-3 col-xl-2">${blocked.block_reason}</div>
-            <div class="border col-lg-1 col-xl-1">${blocked.block_date}</div>
+            <div class="border col-lg-3 col-xl-3">${blocked.block_reason}</div>
+            <div class="border col-lg-1 col-xl-2">${blocked.block_date}</div>
 
          </c:forEach>
       </div>
