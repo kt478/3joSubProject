@@ -198,7 +198,7 @@
 							<div id="IdduplCheck" style="margin-top: -10px;"></div>
 						</div>
 
-						<a href="login.jsp" class="signup-image-link">I am already member</a>
+						<a href="login.jsp" class="signup-image-link"><h3>이미 저희 사이트의 회원이신가요?</h3></a>
 					</div>
 				</div>
 			</div>

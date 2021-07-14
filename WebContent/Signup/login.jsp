@@ -99,35 +99,36 @@ $(function(){
 
 					<div class="container" style="margin-top: 60px;">
 						<div class="signin-content">
-							<div class="signin-image">
+							<div class="signin-image row">
 								<figure>
-									<img src="images/signin-image.jpg" alt="sing up image">
+									<img src="images/signin-image.jpg" alt="sign up image">
 								</figure>
-								<a href="signupView.jsp" class="signup-image-link">아직 회원이 아니세요?</a>
+								<a href="signupView.jsp" class="signup-image-link" style="margin-top:-40px;"><h3>아직 회원이 아니세요?</h3></a>
 								
 							</div>
 
-							<div class="signin-form" style="margin-top:30px;">
+							<div class="signin-form row" style="margin-top:50px;">
 								<h2 class="form-title">로그인</h2>
 
 								<form action="${pageContext.request.contextPath}/login.mem"
 									method="POST" class="register-form" id="login-form">
-									<div class="form-group">
+									<div class="form-group row">
 										<label for="your_name"><i
 											class="zmdi zmdi-account material-icons-name"></i></label> <input
 											type="text" name="id" id="id" placeholder="아이디를 입력하세요." />
 									</div>
-									<div class="form-group">
+									<div class="form-group row">
 										<label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
 										<input type="password" name="pw" id="pw"
 											placeholder="패스워드를 입력하세요." />
 									</div>
-									<div class="form-group">
+									
+									<div class="form-group row">				
+									
+										<a href="Idfind.jsp"> <h3>아이디 찾기</h3> </a>
 										
-											<br><a href="Idfind.jsp" class="signup-image-link" style="margin-left:200px;margin-top:-23px; ">아이디 찾기</a>
-											
 									</div>
-									<div class="form-group form-button" style="text-align:center">
+									<div class="form-group form-button row" style="text-align:center">
 										<input type="button" name="signin" id="signin"
 											class="form-submit" value="로그인" />
 									</div>
