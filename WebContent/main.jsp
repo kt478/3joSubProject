@@ -14,7 +14,7 @@
 
 <style>
 * {font-family: 'Sunflower';}
-/* 페이지전체 navi Style 부분 시작 */ㅋ
+/* 페이지전체 navi Style 부분 시작 */
     #navibar{
         background-color:white;
         z-index: 1000 !important;

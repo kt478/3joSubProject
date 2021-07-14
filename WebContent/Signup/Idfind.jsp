@@ -42,13 +42,13 @@
 <div>
 				<section class="sign-in">
 
-					<div class="container" style="margin-top: 150px;">
+					<div class="container" style="margin-top: 150px; ">
 						<div class="signin-content">
-							<div class="signin-image">
+							<div class="signin-image" style= "margin-bottom:-70px">
 								<figure>
 									<img src="images/signin-image.jpg" alt="sing up image">
 								</figure>
-								<a href="signupView.jsp" class="signup-image-link">아직 회원이 아니세요?</a>
+								<a href="signupView.jsp" class="signup-image-link" style="margin-top:-20px;">아직 회원이 아니세요?</a>
 								
 							</div>
 
@@ -76,7 +76,7 @@
 									</div>
 									
 								
-									<div class="form-group form-button" style="text-align:center">
+									<div class="form-group form-button" style="text-align:center; margin-bottom:-30px;">
 										<input type="submit" name="signin" id="findid"
 											class="form-submit" value="아이디 찾기" />
 									</div>
