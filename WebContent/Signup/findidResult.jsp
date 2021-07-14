@@ -112,6 +112,8 @@
 								<a
 									href="${pageContext.request.contextPath}/main.jsp"><h3
 										style="text-align: center">홈 화면으로 이동</h3></a>
+
+
 							</c:otherwise>
 
 						</c:choose>

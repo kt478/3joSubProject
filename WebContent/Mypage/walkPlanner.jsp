@@ -23,16 +23,16 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d9db0cb18c536b19f38869f24be5bcf&libraries=services"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             navLinks: true, // 날짜 클릭시 이벤트
             navLinkDayClick: function(date, jsEvent) {
-                
               	$("#weatherDay").text("");
             	$("#weatherContents").text("");
-            	$("#img").attr("src","");
+            	$("#weatherimg").attr("src","");
             	$("#dust").text("");
             	$("#minTemper").text("");
 				$("#maxTemper").text(""); // 초기화
@@ -389,6 +389,7 @@
     })
 </script>
 <style>
+* {font-family: 'Sunflower';}
     /* div{border:1px solid black;} */
     body{background-color: #91C788;}
     .container{
@@ -412,7 +413,7 @@
     #searchBox{position: relative;min-height: 110px;}
     .nav-item:hover{border-bottom:3px solid #52734D;}
     #search{
-        width:250px; height:40px;
+        width:200px; height:40px;
         position: absolute;
         top:40px;
         left: 30px;
@@ -426,13 +427,6 @@
     #loginNavi>a:link{text-decoration:none;}
     #loginNavi>a:hover{color: #52734D;border-bottom:3px solid #52734D;}
     #loginNavi>a:visited{color: black;}
-    #search{
-        width:250px; height:40px;
-        position: absolute;
-        top:40px;
-        left: 30px;
-        display: none;
-    }
 /* 페이지전체 navi Style 부분 끝 */  
     #body{height: auto;}
     #weather{border:1px solid black;height:115px;}
@@ -450,7 +444,7 @@
 </style>
 </head>
 <body>
-   <!-- 페이지 전체 navi -->
+<!-- 페이지 전체 navi -->
 	<c:choose>
 		<c:when test="${login.id==null}"> <!-- 로그인 전 -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-white" id="navibar">
@@ -463,16 +457,18 @@
 	        	<div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
 	          		<ul class="navbar-nav mr-auto">
 	            		<li class="nav-item active">
-			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+			            	<strong>산책장소</strong>
+			            	<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			            	<a class="nav-link beforelogin" href="">팻시터</a>
+			            	<a class="nav-link beforelogin" href="javascript:;"><strong>펫시터</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link beforelogin" href="">갤러리</a>
+			                <a class="nav-link beforelogin" href="javascript:;"><strong>갤러리</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link beforelogin" href="">자유게시판</a>
+			                <a class="nav-link beforelogin" href="javascript:;"><strong>자유게시판</strong></a>
 			            </li>
 			            <li class="nav-item" id="searchBox">
 			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
@@ -480,8 +476,8 @@
 			            </li>
 			        </ul>
 		          	<form class="form-inline my-2 my-lg-0" id="loginNavi">
-		            	<a class="mr-sm-2 p-1" style="width:70px;" href="Signup/login.jsp">로그인</a>
-		            	<a class="my-2 my-sm-0" style="width:70px;" href="Signup/signupView.jsp">회원가입</a>
+		            	<a class="mr-sm-2 p-1" style="width:70px;" href="Signup/login.jsp"><strong>로그인</strong></a>
+		            	<a class="my-2 my-sm-0" style="width:70px;" href="Signup/signupView.jsp"><strong>회원가입</strong></a>
 		          	</form>
 		        </div>
 			</nav>
@@ -497,16 +493,18 @@
 		        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
 			    	<ul class="navbar-nav mr-auto">
 			            <li class="nav-item active">
-			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+			            	<strong>산책장소</strong>
+			            	<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			              	<a class="nav-link" href="javascript:;">팻시터</a>
+			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1"><strong>펫시터</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
+			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1"><strong>갤러리</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
+			                <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1"><strong>자유게시판</strong></a>
 			            </li>
 			            <li class="nav-item" id="searchBox">
 			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
@@ -514,8 +512,8 @@
 			            </li>
 			        </ul>
           			<form class="form-inline my-2 my-lg-0" id="loginNavi">
-			            <a class="mr-sm-2" style="width:75px;" href="Mypage.mem">마이페이지</a>
-			            <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
+			            <a class="mr-sm-2" style="width:75px;" href="Mypage.mem"><strong>마이페이지</strong></a>
+			            <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem"><strong>로그아웃</strong></a>
 		          	</form>
         		</div>
      		 </nav>
@@ -538,10 +536,10 @@
                         <div class="row m-0">
                             <div class="col-12" id="weatherDay" style="text-align: center;"></div>
                         </div> 
-                        <div class="row m-0">
-                            <div class="col-5" style="text-align: center;">
-                                <img id="weatherimg" src=""><br>
-                                <strong id="weatherContents"></strong>
+                        <div class="row m-0 h-100">
+                            <div class="col-5 p-0" style="text-align: center;">
+                            	<strong id="weatherContents"></strong>
+                                <img id="weatherimg" src="" style="height:75px;">
                             </div>
                             <div class="col-7">
                                 <div class="row m-0">
@@ -565,7 +563,7 @@
         </div>
         
         <div class="footer">
-            <h3 style="text-align:left;">산책 히스토리</h3>
+            <h3 style="text-align:left;">산책 히스토리🐾</h3>
 	<c:choose>
 		<c:when test="${history == null }">
 		 	<div class="rounded historylist">최근 3개월간 산책 히스토리가 없습니다.</div>

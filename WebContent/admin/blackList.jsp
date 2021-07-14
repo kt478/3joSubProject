@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자_회원명단</title>
+<title>관리자_블랙리스트</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -12,47 +13,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
-<script>
-$(function () {
-	// 네비바 검색창 보이게
-	$("#searchImg").on("click", function() {
-		$("#search").show("slow");
-		$("#search").focus();
-	})
-	$("#search").on("blur", function() {
-		$("#search").hide("slow");
-	})
 
-	//네비바 검색창에서 검색기능
-	$("#search").on("keyup",function(e) {
-		if (e.keyCode == 13) {
-			let search = $("#search").val();
-			location.href = "${pageContext.request.contextPath}/search.cos?cpage=1&keyWord=" + search;
-		}
-	})
-	
-	// 네비바 비회원일 경우 로그인 페이지로 일괄 보내기.
-	$(".beforelogin, #read_more_pet").on("click",function(){
-		var result = confirm("로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?");
-		if(result){
-			location.href = "Signup/login.jsp";
-		}
-	}) 
-       
-       
-	$("#allList").on("click",function(){
-		location.href="${pageContext.request.contextPath}/memberList.ad?cpage=1";
-	})
-	
-})
-</script>
 <style>
-* {font-family: 'Sunflower';}
+
+* {font-family: 'Sunflower'; box-sizing: border-box;}
 /* 페이지전체 navi Style 부분 시작 */
     #navibar{
         background-color:white;
@@ -90,16 +59,70 @@ $(function () {
 .list-group-item{padding:0px;}
 .admin_menu{width:100%; height:100px; text-align:center; line-height:100px;}
 
-/* 회원 명단 style */
-.memberList{position:absolute; top:200px; left:300px;}
-.memberTitle{background-color:#c8e3c4;}
-.box{border:1px solid #ddd;}
+/* 블랙리스트 */
+body {background-color: white; border-color: black;}
+.row div{text-align:center;}
+.container {box-sizing: border-box;}
 
-.look{position:absolute; top:150px; left:300px;}
-#searchBtn{width:100%;}
 </style>
-</head>
 
+<script>
+	$(function() {
+		// 네비바 검색창 보이게
+		$("#searchImg").on("click", function() {
+			$("#search").show("slow");
+			$("#search").focus();
+		})
+		$("#search").on("blur", function() {
+			$("#search").hide("slow");
+		})
+
+		//네비바 검색창에서 검색기능
+		$("#search").on("keyup",function(e) {
+			if (e.keyCode == 13) {
+				let search = $("#search").val();
+				location.href = "${pageContext.request.contextPath}/search.cos?cpage=1&keyWord=" + search;
+			}
+		})
+		
+		// 네비바 비회원일 경우 로그인 페이지로 일괄 보내기.
+		$(".beforelogin, #read_more_pet").on("click",function(){
+			var result = confirm("로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?");
+			if(result){
+				location.href = "Signup/login.jsp";
+			}
+		})  
+		
+		
+		//삭제버튼
+      $(".block_reg").on("click",function() {
+               $(".block_id").val($(this).parent().siblings(".mem_id").text());
+               $(".block_name").val($(this).parent().siblings(".mem_name").text());
+               $(".block_email").val($(this).parent().siblings(".mem_email").text());
+               $(".block_contact").val($(this).parent().siblings(".mem_contact").text());
+               $("#block_reg_form").submit();
+               
+            })
+            
+            
+            /* $("#blacklistshowup").on("click",function(){
+               var box1 = document.getElementById("BlackListView");
+               var box2 = document.getElementById("BlackListView2");
+               
+               
+            if(box1.style.display=="none"||box2.style.display=="none"){   
+               $("#BlackListView").css("display","block");
+               $("#BlackListView2").css("display","block");
+            }
+            else if(box1.style.display=="block"||box2.style.display=="block"){
+               $("#BlackListView").css("display","none");
+               $("#BlackListView2").css("display","none"); */
+            }
+		})
+   })
+</script>
+
+</head>
 <body>
 
 <!-- 페이지 전체 navi -->
@@ -229,81 +252,85 @@ $(function () {
   			</li>
 		</ul>
 	</div>
+	
 
-<!-- 검색기능 -->
-	<form action="${pageContext.request.contextPath}/memberList.ad" method="get">
-	<div class="container look">
-	<input type="hidden" name="cpage" value="1"> 
-	<div class="row">
-	<div class="col-4 col-md-2">
-	<select id="category" name="category" class="form-control">
-		<option value="id">회원id</option>
-		<option value="person_age">회원 나이</option>
-		<option value="person_gender">회원 성별</option>
-		<option value="local">지역</option>
-		<option value="reg_date">가입일</option>
-	</select>
-	</div>
-	<div class="col-4 col-md-8">
-	<input type="text" name="keyword" placeholder="검색어를 입력하세요. 단, 회원 가입일은 210711 형식으로 입력바랍니다" class="form-control">
-	</div>
-	<div class="col-4 col-md-2">
-	<button id="searchBtn" class="btn btn-outline-secondary">검색</button>
-	</div>
-	</div>
-	</div>
-	</form>
-	
-<!-- list 뽑아오기 -->
-	<div class="container memberList">
-		<div class= "row m-0 p-4 memberTitle">
-			<div class="col-12"><h3>회원 정보</h3>
-		</div>
-	</div>
-	
-	<c:forEach var="i" items="${list}">
- 		<div class="row m-0 p-4 box">
-            <div class="col-9 p-0">
-            	 <div class="row m-0">
-                    <div class="col-12">
-                        <h3>아이디 : ${i.id}</h3>
-                    </div>
-                </div>
-                <div class="row m-0">
-                    <div class="col-12 col-md-3 pl-3 pt-3">회원 이름 : ${i.person_name}</div>
-                    <div class="col-12 col-md-3 pl-3 pt-3">회원 나이 : ${i.person_age}</div>
-                    <div class="col-12 col-md-3 pl-3 pt-3">회원 성별 : ${i.person_gender}</div>
-                </div>
-                <div class="row m-0">
-                    <div class="col-12 col-md-3 pl-3 pt-3">지역 : ${i.local}</div>
-                    <div class="col-12 col-md-4 pl-3 pt-3">이메일 : ${i.email}</div>
-                    <div class="col-12 col-md-4 pl-3 pt-3">회원 가입일 : ${i.reg_date}</div>
-                </div>
+<!-- 블랙리스트 -->
+   <div class="container-lg border p-0" id="BlackListView"
+      style="/* display:none; */width: 1600px; height: 500px; margin-left: 250px; margin-top: 50px; box-sizing: border-box">
+      <h3 style="text-align: center">가입 회원 정보 조회</h3>
+
+      <div class="row m-0" style="box-sizing: border-box">
+
+         <div class="border col-lg-1 col-xl-1">아이디</div>
+         <div class="border col-lg-2 col-xl-2">이메일</div>
+         <div class="border col-lg-1 col-xl-1">이름</div>
+         <div class="border col-lg-1 col-xl-1">연령대</div>
+         <div class="border col-lg-2 col-xl-2">연락처</div>
+         <div class="border col-lg-1 col-xl-1">가입날짜</div>
+         <div class="border col-lg-3 col-xl-2">강제탈퇴사유설정</div>
+         <div class="border col-lg-2 col-xl-2">강제 탈퇴</div>
+
+      </div>
+
+      <c:forEach var="mem" items="${Member}">
+         <form action="${pageContext.request.contextPath}/block_member.mem"
+            method="post" id="block_reg_form">
+            <div class="row m-0" style="box-sizing: border-box">
+               <div class="border col-lg-1 col-xl-1 mem_id">${mem.id}</div>
+               <div class="border col-lg-2 col-xl-2 mem_email">${mem.email}</div>
+               <div class="border col-lg-1 col-xl-1 mem_name">${mem.person_name}</div>
+               <div class="border col-lg-1 col-xl-1">${mem.person_age}</div>
+               <div class="border col-lg-2 col-xl-2 mem_contact">${mem.contact}</div>
+               <div class="border col-lg-1 col-xl-1">${mem.reg_date}</div>
+               <div class="border col-lg-3 col-xl-2">
+                  <select name="block_reason">
+                     <option value="타 회원 비방 및 욕설">타 회원 비방 및 욕설</option>
+                     <option value="불법적인 경로로 가입">불법적인 경로로 가입</option>
+                     <option value="불법적인/선정적인 게시물 게시">불법적/선정적인 게시물 게시</option>
+                  </select>
+               </div>
+               <div class="border col-lg-2 col-xl-2">
+                  <input type="button" value="블랙리스트로 등록" class="block_reg">
+               </div>
+               <input type=hidden name="id" class="block_id" value=""> <input
+                  type=hidden name="name" class="block_name" value=""> <input
+                  type=hidden name="contact" class="block_contact" value="">
+               <input type=hidden name="email" class="block_email" value="">
             </div>
-            <div class="col-3 p-0" id="profile">
-                <div class="image"><img src="person_img/${i.person_oriName}" style="width:265px; height:120px;"></div>
-            </div>
- 		</div>
- 	</c:forEach>
- 	<!-- 페이징 -->
- 	<div class="row">
- 	<div class="col-6"><button type=button id="allList" class="btn btn-outline-secondary">전체 목록 출력</button></div>
- 	<div class="col-6 page">
- 	<c:forEach var="i" items="${navi}" varStatus="s">
-				<c:choose>
-					<c:when test="${ i == '>' }">
-						<a href="${pageContext.request.contextPath}/memberList.ad?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}">${i}</a>
-					</c:when>
-					<c:when test="${ i == '<' }">
-						<a href="${pageContext.request.contextPath}/memberList.ad?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}">${i}</a>
-					</c:when>
-					<c:otherwise>
-						<a href="${pageContext.request.contextPath}/memberList.ad?cpage=${i}&category=${category}&keyword=${keyword}">${i}</a>
-					</c:otherwise>
-				</c:choose>
-	</c:forEach>
-	</div>
-	</div>
-	</div>
+         </form>
+      </c:forEach>
+   </div>
+
+   <div class="container-lg border p-0" id="BlackListView2"
+      style="/* display:none; */ width: 1600px; height: 500px; margin-left: 250px; margin-top: 170px; box-sizing: border-box">
+      <h3 style="text-align: center">블랙리스트 회원 조회</h3>
+
+      <div class="row m-0" style="box-sizing: border-box; margin: auto;">
+         <div class="border col-lg-1 col-xl-1">번호</div>
+         <div class="border col-lg-1 col-xl-1">아이디</div>
+         <div class="border col-lg-2 col-xl-2">이메일</div>
+         <div class="border col-lg-1 col-xl-1">이름</div>
+         <div class="border col-lg-2 col-xl-2">연락처</div>
+         <div class="border col-lg-3 col-xl-2">강제 탈퇴 사유</div>
+         <div class="border col-lg-1 col-xl-1">강제 탈퇴 날짜</div>
+
+      </div>
+
+      <div class="row m-0" style="box-sizing: border-box">
+
+         <c:forEach var="blocked" items="${BlackList}">
+         
+            <div class="border col-lg-1 col-xl-1">${blocked.seq}</div>
+            <div class="border col-lg-1 col-xl-1">${blocked.id}</div>
+            <div class="border col-lg-2 col-xl-2">${blocked.email}</div>
+            <div class="border col-lg-1 col-xl-1">${blocked.name}</div>
+            <div class="border col-lg-2 col-xl-2">${blocked.contact}</div>
+            <div class="border col-lg-3 col-xl-2">${blocked.block_reason}</div>
+            <div class="border col-lg-1 col-xl-1">${blocked.block_date}</div>
+
+         </c:forEach>
+      </div>
+   </div>
+
 </body>
 </html>

@@ -19,15 +19,6 @@
     
     <style>
 
-
-    /*   #searchBox{width:200px;transition:all .5s ease; visibility: hidden;}
-      #searchBox:focus{width:200px}
-  
-  
-  
-  	 .nav-search:hover{
-    	cursor: pointer;
-  	 } */
   
   
   *{
@@ -38,56 +29,32 @@
   
   #navibar{
         background-color:white;
-        text-align: center;
-        line-height:98px;
-        min-height:100px;
-        height:auto;
-        position:fixed;
-        top:0px;left:0px;
-        font-weight: 600;
-        font-size: large;
         z-index: 1000 !important;
     }
-      .navitext>a{color:black;}
-      .navitext>a:link{text-decoration:none;}
-      .navitext>a:hover{color: #52734D;}
-      .navitext>a:visited{color: black;}
-    .navitext:hover{border-bottom:3px solid #52734D;}
+    #searchBox{position: relative;min-height: 110px;}
+    .nav-item:hover{border-bottom:3px solid #52734D;}
     #search{
-        width:250px; height:41px;
+        width:250px; height:40px;
+        position: absolute;
+        top:40px;
+        left: 30px;
         display: none;
     }
+    #searchImg{position: absolute;top:40px;}
     #searchImg:active~#search{left:0px;}
-   
-   #searchImg:hover{
-        cursor: pointer;
+    #searchBox{width:300px;}
+    #loginNavi{min-width: 150px;}
+    #loginNavi>a{color:black;}
+    #loginNavi>a:link{text-decoration:none;}
+    #loginNavi>a:hover{color: #52734D;border-bottom:3px solid #52734D;}
+    #loginNavi>a:visited{color: black;}
+    #search{
+        width:250px; height:40px;
+        position: absolute;
+        top:40px;
+        left: 30px;
+        display: none;
     }
-    
-    
-    
-    
-    
-    #rightArrow:hover{
-    
-    color:white;
-    background-color:rgb(14, 194, 14)
-    
-    }
-    #leftArrow:hover{
-    
-    color:white;
-    background-color:rgb(14, 194, 14)
-    
-    }
-    #bottomNumber:hover{
-    
-    color:white;
-    background-color:rgb(14, 194, 14)
-    
-    
-    }
-	
-
 
 
 
@@ -98,27 +65,7 @@
 
 
 <script>
-/* $(function(){
-    $(".nav-search").on("click",function(){
-      
-      $("#searchBox").attr("style","visibility:visible");
 
-    })
-    $("#searchBox").keydown(function(key){
-      if (key.keyCode == 13) {
-                  location.href="http://www.naver.com";
-              }
-      
-
-    })
-    $("#searchBox").focusout(function(){
-      
-      $(this).attr("style","visibility:hidden");
-      
-
-    }) 
-
-  })*/
     
   $(function(){
 	  $("#searchImg").on("click",function(){
@@ -171,79 +118,112 @@
 	<link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+
   </head>
   <body>
 	
 	<c:choose>
-
-		<c:when test="${login.id==null}">
-			<div class="container-fluid p-0" id="navibar">
-
-
-				<div class="row m-0">
-					<div class="col-12 col-lg-3 col-xl-2 p-0">
-						<a href="beforeLogin.gal?cpage=1"><img src="project_logo.jpg"></a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소</a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href= "javascript:;" id="petsitter">펫시터</a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
-					</div>
-					<div class="col-3 col-lg-3 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
-					</div>
-					<div class="col-12 col-lg-4 col-xl-4 p-0">
-						<img src="search.png" id="searchImg"> <input type="text"
-							placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3"
-							id="search">
-					</div>
-					<div class="col-6 col-lg-4 col-xl-1 p-0 navitext" id="mypage">
-						<a href="Signup/signupView.jsp">회원가입</a>
-					</div>
-					<div class="col-6 col-lg-4 col-xl-1 p-0 navitext">
-						<a href="Signup/login.jsp">로그인</a>
-					</div>
-				</div>
-
-			</div>
+		<c:when test="${login.id==null}"> <!-- 로그인 전 -->
+			<nav class="navbar navbar-expand-lg navbar-light bg-white" id="navibar">
+        		<a class="navbar-brand p-0 mr-4" href="${pageContext.request.contextPath}/main.jsp">
+        			<img src="project_logo.jpg">
+        		</a>
+	        	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	          		<span class="navbar-toggler-icon"></span>
+	        	</button>
+	        	<div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
+	          		<ul class="navbar-nav mr-auto">
+	            		<li class="nav-item active">
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+			            </li>
+			            <li class="nav-item">
+			            	<a class="nav-link beforelogin" href="javascript:;">펫시터</a>
+			            </li>
+			            <li class="nav-item">
+			                <a class="nav-link beforelogin" href="javascript:;">갤러리</a>
+			            </li>
+			            <li class="nav-item">
+			                <a class="nav-link beforelogin" href="javascript:;">자유게시판</a>
+			            </li>
+			            <li class="nav-item" id="searchBox">
+			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
+			                <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="search">
+			            </li>
+			        </ul>
+		          	<form class="form-inline my-2 my-lg-0" id="loginNavi">
+		            	<a class="mr-sm-2 p-1" style="width:70px;" href="Signup/login.jsp">로그인</a>
+		            	<a class="my-2 my-sm-0" style="width:70px;" href="Signup/signupView.jsp">회원가입</a>
+		          	</form>
+		        </div>
+			</nav>
 		</c:when>
-
-
+		<c:when test="${login.id=='admin'}">
+         <nav class="navbar navbar-expand-lg navbar-light bg-white" id="navibar">
+              <a class="navbar-brand p-0 mr-4" href="${pageContext.request.contextPath}/main.jsp">
+                 <img src="project_logo.jpg">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                   <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
+                <ul class="navbar-nav mr-auto">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+                     </li>
+                     <li class="nav-item">
+                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
+                     </li>
+                     <li class="nav-item" id="searchBox">
+                         <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
+                         <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="search">
+                     </li>
+                 </ul>
+                   <form class="form-inline my-2 my-lg-0" id="loginNavi">
+                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.ad">관리자</a>
+                     <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
+                   </form>
+              </div>
+            </nav>
+     	</c:when>
 		<c:otherwise>
-			<div class="container-fluid p-0" id="navibar">
-				<div class="row m-0">
-					<div class="col-12 col-lg-3 col-xl-2 p-0">
-						<a href="main.jsp"><img src="project_logo.jpg"></a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소</a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
-					</div>
-					<div class="col-3 col-lg-3 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
-					</div>
-					<div class="col-12 col-lg-4 col-xl-4 p-0">
-						<img src="search.png" id="searchImg"> <input type="text"
-							placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3"
-							id="search">
-					</div>
-					<div class="col-6 col-lg-4 col-xl-1 p-0 navitext" id="mypage">
-						<a href="Mypage.mem">마이페이지</a>
-					</div>
-					<div class="col-6 col-lg-4 col-xl-1 p-0 navitext">
-						<a href="logout.mem">로그아웃</a>
-					</div>
-				</div>
-			</div>
+			<nav class="navbar navbar-expand-lg navbar-light bg-white" id="navibar">
+		        <a class="navbar-brand p-0 mr-4" href="${pageContext.request.contextPath}/main.jsp">
+		        	<img src="project_logo.jpg">
+		        </a>
+		        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		          	<span class="navbar-toggler-icon"></span>
+		        </button>
+		        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
+			    	<ul class="navbar-nav mr-auto">
+			            <li class="nav-item active">
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+			            </li>
+			            <li class="nav-item">
+			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
+			            </li>
+			            <li class="nav-item">
+			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
+			            </li>
+			            <li class="nav-item">
+			                <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
+			            </li>
+			            <li class="nav-item" id="searchBox">
+			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
+			                <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="search">
+			            </li>
+			        </ul>
+          			<form class="form-inline my-2 my-lg-0" id="loginNavi">
+			            <a class="mr-sm-2" style="width:75px;" href="Mypage.mem">마이페이지</a>
+			            <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
+		          	</form>
+        		</div>
+     		 </nav>
 		</c:otherwise>
 	</c:choose>
 	
@@ -255,7 +235,7 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">홈 <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+          	
             <h1 class="mb-0 bread">갤러리</h1>
           </div>
         </div>
@@ -405,78 +385,6 @@
       </div>
     </section>
 
-    <footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-						<h2 class="footer-heading">WAKI TOKI</h2>
-						<p>Walk with dog Talk with dog의 줄임말로
-							반려견과 함께 호흡하는 즐거운 시간을 나타내는 말입니다.<br><br>
-							
-							소중한 반려견과 편안한 시간을 갖도록 도움을 주는 웹 플랫폼입니다.<br><br>
-							산책친구찾기 기능부터 산책장소 추천
-							펫시터모집까지 다양한 편의기능을 지원합니다.</p>
-						<ul class="ftco-footer-social p-0">
-              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
-            </ul>
-					</div>
-					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-						<h2 class="footer-heading">최신 갤러리</h2>
-						<div class="block-21 mb-4 d-flex">
-              <a class="img mr-4 rounded" style="background-image: url(images/image_1.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">강아지와 함께 산책</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span>2021년 6월 7일</a></div>
-                
-                </div>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="img mr-4 rounded" style="background-image: url(images/image_2.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">강아지 목욕시키기</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> 2021년 5월 20일</a></div>
-                 
-                </div>
-              </div>
-            </div>
-					</div>
-					<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
-						<h2 class="footer-heading">빠른 메뉴</h2>
-						<ul class="list-unstyled">
-              <li><a href="#" class="py-2 d-block">홈</a></li>
-              <li><a href="#" class="py-2 d-block">산책</a></li>
-              <li><a href="#" class="py-2 d-block">펫시터</a></li>
-              <li><a href="#" class="py-2 d-block">플레너</a></li>
-              <li><a href="#" class="py-2 d-block">갤러리</a></li>
-              <li><a href="#" class="py-2 d-block">문의하기</a></li>
-            </ul>
-					</div>
-					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-						<h2 class="footer-heading">궁금한점이 있으신가요?</h2>
-						<div class="block-23 mb-3">
-              <ul>
-                <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
-              </ul>
-            </div>
-					</div>
-				</div>
-				<div class="row mt-5">
-          <div class="col-md-12 text-center">
-
-            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-			</div>
-		</footer>
 
     
   
