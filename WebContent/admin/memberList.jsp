@@ -88,7 +88,7 @@ $(function () {
 .side_menu{position:fixed; top:150px; width:250px;}
 .list-group{height:100px;}
 .list-group-item{padding:0px;}
-.admin_menu{width:100%; height:200px; text-align:center; line-height:200px;}
+.admin_menu{width:100%; height:100px; text-align:center; line-height:100px;}
 
 /* 회원 명단 style */
 .memberList{position:absolute; top:200px; left:300px;}
@@ -219,13 +219,13 @@ $(function () {
 	<div class="container side_menu">
 		<ul class="list-group">
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/memberList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">회원 명단</a>
+  				<a href="${pageContext.request.contextPath}/memberList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu"><strong>회원 명단</strong></a>
 			</li>
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/questionList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">쪽지함</a>
+  				<a href="${pageContext.request.contextPath}/questionList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu"><strong>쪽지함</strong></a>
  			 </li>
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/blackList.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup">블랙리스트 명단</a></li>
+  				<a href="${pageContext.request.contextPath}/blackList.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup"><strong>블랙리스트 명단</strong></a></li>
   			</li>
 		</ul>
 	</div>
