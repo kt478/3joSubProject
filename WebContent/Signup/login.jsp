@@ -101,7 +101,7 @@ $(function(){
 						<div class="signin-content">
 							<div class="signin-image">
 								<figure>
-									<img src="images/signin-image.jpg" alt="sing up image">
+									<img src="images/signin-image.jpg" alt="sign up image">
 								</figure>
 								<a href="signupView.jsp" class="signup-image-link">아직 회원이 아니세요?</a>
 								
