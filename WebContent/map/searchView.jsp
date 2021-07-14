@@ -48,7 +48,7 @@
     }
 /* 페이지전체 navi Style 부분 끝 */   
 
-	.container{margin-top:100px; }
+	
 	#keyword{background-color:#ddd; height:60px;  line-height:60px; text-align:center; margin-bottom:20px;}
 	.menu{border:1px solid #ddd; height:100px;   margin:auto; width:600px; padding: 15px 0px 0px 15px; position:relative;}
 	.menu:hover{background-color:#ddd;}
