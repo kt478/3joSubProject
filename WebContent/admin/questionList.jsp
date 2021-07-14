@@ -52,7 +52,7 @@
 .side_menu{position:fixed; top:150px; width:250px;}
 .list-group{height:100px;}
 .list-group-item{padding:0px;}
-.admin_menu{width:100%; height:200px; text-align:center; line-height:200px;}
+.admin_menu{width:100%; height:100px; text-align:center; line-height:100px;}
 
 /* 메인 내비바 아래 제목 공간 */
 #temp {
@@ -137,16 +137,18 @@ span{font-size:30px; font-weight:600; background-color:#c8e3c4;}
 	        	<div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
 	          		<ul class="navbar-nav mr-auto">
 	            		<li class="nav-item active">
-			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+			            	<strong>산책장소</strong>
+			            	<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			            	<a class="nav-link beforelogin" href="javascript:;">펫시터</a>
+			            	<a class="nav-link beforelogin" href="javascript:;"><strong>펫시터</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link beforelogin" href="javascript:;">갤러리</a>
+			                <a class="nav-link beforelogin" href="javascript:;"><strong>갤러리</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link beforelogin" href="javascript:;">자유게시판</a>
+			                <a class="nav-link beforelogin" href="javascript:;"><strong>자유게시판</strong></a>
 			            </li>
 			            <li class="nav-item" id="searchBox">
 			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
@@ -154,8 +156,8 @@ span{font-size:30px; font-weight:600; background-color:#c8e3c4;}
 			            </li>
 			        </ul>
 		          	<form class="form-inline my-2 my-lg-0" id="loginNavi">
-		            	<a class="mr-sm-2 p-1" style="width:70px;" href="Signup/login.jsp">로그인</a>
-		            	<a class="my-2 my-sm-0" style="width:70px;" href="Signup/signupView.jsp">회원가입</a>
+		            	<a class="mr-sm-2 p-1" style="width:70px;" href="Signup/login.jsp"><strong>로그인</strong></a>
+		            	<a class="my-2 my-sm-0" style="width:70px;" href="Signup/signupView.jsp"><strong>회원가입</strong></a>
 		          	</form>
 		        </div>
 			</nav>
@@ -171,16 +173,18 @@ span{font-size:30px; font-weight:600; background-color:#c8e3c4;}
               <div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
                 <ul class="navbar-nav mr-auto">
                      <li class="nav-item active">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+                        <strong>산책장소</strong>
+                        <span class="sr-only">(current)</span></a>
                      </li>
                      <li class="nav-item">
-                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">팻시터</a>
+                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1"><strong>펫시터</strong></a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
+                         <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1"><strong>갤러리</strong></a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
+                         <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1"><strong>자유게시판</strong></a>
                      </li>
                      <li class="nav-item" id="searchBox">
                          <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
@@ -188,8 +192,8 @@ span{font-size:30px; font-weight:600; background-color:#c8e3c4;}
                      </li>
                  </ul>
                    <form class="form-inline my-2 my-lg-0" id="loginNavi">
-                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.ad">관리자</a>
-                     <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
+                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.ad"><strong>관리자</strong></a>
+                     <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem"><strong>로그아웃</strong></a>
                    </form>
               </div>
             </nav>
@@ -205,16 +209,18 @@ span{font-size:30px; font-weight:600; background-color:#c8e3c4;}
 		        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
 			    	<ul class="navbar-nav mr-auto">
 			            <li class="nav-item active">
-			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소<span class="sr-only">(current)</span></a>
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+			            	<strong>산책장소</strong>
+			            	<span class="sr-only">(current)</span></a>
 			            </li>
 			            <li class="nav-item">
-			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">팻시터</a>
+			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1"><strong>펫시터</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
+			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1"><strong>갤러리</strong></a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
+			                <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1"><strong>자유게시판</strong></a>
 			            </li>
 			            <li class="nav-item" id="searchBox">
 			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
@@ -222,8 +228,8 @@ span{font-size:30px; font-weight:600; background-color:#c8e3c4;}
 			            </li>
 			        </ul>
           			<form class="form-inline my-2 my-lg-0" id="loginNavi">
-			            <a class="mr-sm-2" style="width:75px;" href="Mypage.mem">마이페이지</a>
-			            <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
+			            <a class="mr-sm-2" style="width:75px;" href="Mypage.mem"><strong>마이페이지</strong></a>
+			            <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem"><strong>로그아웃</strong></a>
 		          	</form>
         		</div>
      		 </nav>
@@ -235,13 +241,13 @@ span{font-size:30px; font-weight:600; background-color:#c8e3c4;}
 	<div class="container side_menu">
 		<ul class="list-group">
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/memberList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">회원 명단</a>
+  				<a href="${pageContext.request.contextPath}/memberList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu"><strong>회원 명단</strong></a>
 			</li>
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/questionList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu">쪽지함</a>
+  				<a href="${pageContext.request.contextPath}/questionList.ad?cpage=1" class="list-group-item list-group-item-action list-group-item-success admin_menu"><strong>쪽지함</strong></a>
  			 </li>
   			<li class="list-group-item">
-  				<a href="${pageContext.request.contextPath}/blackList.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup">블랙리스트 명단</a></li>
+  				<a href="${pageContext.request.contextPath}/blackList.ad" class="list-group-item list-group-item-action list-group-item-success admin_menu" id="blacklistshowup"><strong>블랙리스트 명단</strong></a></li>
   			</li>
 		</ul>
 	</div>
@@ -255,20 +261,20 @@ span{font-size:30px; font-weight:600; background-color:#c8e3c4;}
 			<div class="container form shadow-sm p-3 mb-5 bg-white rounded" 
 				style="border: 1px solid grey; padding: 10px; text-align:center; border-radius:5px; margin-bottom:10px;">
 				<div class="row">
-					<div class="col">번호 : ${list.seq}</div>
-					<div class="col">이름 : ${list.name}</div>
-					<div class="col">이메일 : ${list.email}</div>
+					<div class="col-4">번호 : ${list.seq}</div>
+					<div class="col-4">이름 : ${list.name}</div>
+					<div class="col-4">이메일 : ${list.email}</div>
 				</div>
 				<hr>
 				<div class="row">
-					<div class="col">날짜 : ${list.ask_date}</div>
-					<div class="col">카테고리 : ${list.type}</div>
-					<div class="col"><a href="${pageContext.request.contextPath}/questionDelete.ad?seq=${list.seq}">
+					<div class="col-4">날짜 : ${list.ask_date}</div>
+					<div class="col-4">카테고리 : ${list.type}</div>
+					<div class="col-4"><a href="${pageContext.request.contextPath}/questionDelete.ad?seq=${list.seq}">
 						<button class="btn btn-outline-info btn-sm delete">삭제</button></a></div>
 				</div>
 				<hr>
 				<div class="row">
-					<div class="col">내용 : ${list.contents}</div>
+					<div class="col-12">내용 : ${list.contents}</div>
 				</div>
 			</div>
 		</c:forEach>

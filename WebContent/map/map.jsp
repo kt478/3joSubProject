@@ -34,15 +34,19 @@
         			location.href="${pageContext.request.contextPath}/search.cos?cpage=1&keyWord="+search;
         		}
         	})
-        	
-        	 // 펫시터
+        	// 네비바 비회원일 경우 로그인 페이지로 일괄 보내기.
+			$(".beforelogin, #read_more_pet").on("click",function(){
+				var result = confirm("로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?");
+				if(result){
+					location.href = "Signup/login.jsp";
+				}
+			})
+			// 펫시터
 			$("#petsitter").on("click",function(){
 					let result = confirm("로그인이 필요한 화면입니다 로그인 하시겠습니까?")
 					if(result){
-						location.href="Signup/login.jsp";
-					}else {
-					location.href="main.jsp";
-				}
+						location.href="signup/login.jsp";
+					}
 			})
         	
         	 // 네비바 검색창
@@ -375,6 +379,7 @@
 		</c:otherwise>
 	</c:choose>
 
+<!-- 산책장소 시작 -->
     <div class="wrapper">
 	    	<div id="side">
 	    	<div id=title>산책코스 추천</div>

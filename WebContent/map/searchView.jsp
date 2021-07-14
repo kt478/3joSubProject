@@ -16,31 +16,39 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style>
-	*{font-family:Sunflower;}
-	 #navibar{
-        background-color:rgba(255, 255, 255, 0.945);
-        text-align: center;
-        line-height:98px;
-        min-height:100px;
-        height:auto;
-        position:fixed;
-        top:0px;left:0px;
-        font-weight: 600;
-        font-size: large;
+* {font-family: 'Sunflower';}
+/* 페이지전체 navi Style 부분 시작 */ㅋ
+    #navibar{
+        background-color:white;
         z-index: 1000 !important;
     }
-      .navitext>a{color:black;}
-      .navitext>a:link{text-decoration:none;}
-      .navitext>a:hover{color: #52734D;}
-      .navitext>a:visited{color: black;}
-    .navitext:hover{border-bottom:3px solid #52734D;}
+    #searchBox{position: relative;min-height: 110px;}
+    .nav-item:hover{border-bottom:3px solid #52734D;}
     #search{
-        width:250px; height:41px;
-       display: none; 
+        width:250px; height:40px;
+        position: absolute;
+        top:40px;
+        left: 30px;
+        display: none;
     }
+    #searchImg{position: absolute;top:40px;}
     #searchImg:active~#search{left:0px;}
+    #searchBox{width:300px;}
+    #loginNavi{min-width: 150px;}
+    #loginNavi>a{color:black;}
+    #loginNavi>a:link{text-decoration:none;}
+    #loginNavi>a:hover{color: #52734D;border-bottom:3px solid #52734D;}
+    #loginNavi>a:visited{color: black;}
+    #search{
+        width:250px; height:40px;
+        position: absolute;
+        top:40px;
+        left: 30px;
+        display: none;
+    }
+/* 페이지전체 navi Style 부분 끝 */   
 
-	.container{margin-top:100px; }
+	
 	#keyword{background-color:#ddd; height:60px;  line-height:60px; text-align:center; margin-bottom:20px;}
 	.menu{border:1px solid #ddd; height:100px;   margin:auto; width:600px; padding: 15px 0px 0px 15px; position:relative;}
 	.menu:hover{background-color:#ddd;}
@@ -56,13 +64,30 @@
 </style>
 	<script>
 		$(function(){
-			$("#searchImg").on("click",function(){
-                $("#search").show("slow");
-                $("#search").focus();
-            })
-            $("#search").on("blur",function(){
-               $("#search").hide("slow");
-            })
+			// 네비바 검색창 보이게
+			$("#searchImg").on("click", function() {
+				$("#search").show("slow");
+				$("#search").focus();
+			})
+			$("#search").on("blur", function() {
+				$("#search").hide("slow");
+			})
+
+			//네비바 검색창에서 검색기능
+			$("#search").on("keyup",function(e) {
+				if (e.keyCode == 13) {
+					let search = $("#search").val();
+					location.href = "${pageContext.request.contextPath}/search.cos?cpage=1&keyWord=" + search;
+				}
+			})
+			
+			// 네비바 비회원일 경우 로그인 페이지로 일괄 보내기.
+			$(".beforelogin, #read_more_pet").on("click",function(){
+				var result = confirm("로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?");
+				if(result){
+					location.href = "Signup/login.jsp";
+				}
+			})
 			// 펫시터
 			$("#petsitter").on("click",function(){
 					let result = confirm("로그인이 필요한 화면입니다 로그인 하시겠습니까?")
@@ -71,85 +96,119 @@
 					}
 			})
 			
-			//네비바 검색창에서 검색기능
-        	$("#search").on("keyup",function(e){
-        		if(e.keyCode==13){
-        			let search = $("#search").val();
-        			location.href="${pageContext.request.contextPath}/search.cos?cpage=1&keyWord="+search;
-        		}
-        	})
-			
-			
 		})
 	</script>
 </head>
 <body>
-	<!--네비바  -->
+	<!-- 페이지 전체 navi -->
 	<c:choose>
-		<c:when test="${login.id==null}">
-			<div class="container-fluid p-0" id="navibar">
-				<div class="row m-0">
-					<div class="col-12 col-lg-3 col-xl-2 p-0">
-						<a href="${pageContext.request.contextPath}/main.jsp"><img src="project_logo.jpg"></a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소</a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext" >
-						<a href= "javascript:;" id="petsitter">펫시터</a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
-					</div>
-					<div class="col-3 col-lg-3 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
-					</div>
-					<div class="col-12 col-lg-4 col-xl-4 p-0">
-						<img src="search.png" id="searchImg"> <input type="text"
-							placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3"
-							id="search">
-					</div>
-					<div class="col-6 col-lg-4 col-xl-1 p-0 navitext" id="mypage">
-						<a href="#">회원가입</a>
-					</div>
-					<div class="col-6 col-lg-4 col-xl-1 p-0 navitext">
-						<a href="signup/login.jsp">로그인</a>
-					</div>
-				</div>
-
-			</div>
+		<c:when test="${login.id==null}"> <!-- 로그인 전 -->
+			<nav class="navbar navbar-expand-lg navbar-light bg-white" id="navibar">
+        		<a class="navbar-brand p-0 mr-4" href="${pageContext.request.contextPath}/main.jsp">
+        			<img src="project_logo.jpg">
+        		</a>
+	        	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	          		<span class="navbar-toggler-icon"></span>
+	        	</button>
+	        	<div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
+	          		<ul class="navbar-nav mr-auto">
+	            		<li class="nav-item active">
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+			            	<strong>산책장소</strong>
+			            	<span class="sr-only">(current)</span></a>
+			            </li>
+			            <li class="nav-item">
+			            	<a class="nav-link beforelogin" href="javascript:;"><strong>펫시터</strong></a>
+			            </li>
+			            <li class="nav-item">
+			                <a class="nav-link beforelogin" href="javascript:;"><strong>갤러리</strong></a>
+			            </li>
+			            <li class="nav-item">
+			                <a class="nav-link beforelogin" href="javascript:;"><strong>자유게시판</strong></a>
+			            </li>
+			            <li class="nav-item" id="searchBox">
+			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
+			                <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="search">
+			            </li>
+			        </ul>
+		          	<form class="form-inline my-2 my-lg-0" id="loginNavi">
+		            	<a class="mr-sm-2 p-1" style="width:70px;" href="Signup/login.jsp"><strong>로그인</strong></a>
+		            	<a class="my-2 my-sm-0" style="width:70px;" href="Signup/signupView.jsp"><strong>회원가입</strong></a>
+		          	</form>
+		        </div>
+			</nav>
 		</c:when>
+		<c:when test="${login.id=='admin'}">
+         <nav class="navbar navbar-expand-lg navbar-light bg-white" id="navibar">
+              <a class="navbar-brand p-0 mr-4" href="${pageContext.request.contextPath}/main.jsp">
+                 <img src="project_logo.jpg">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                   <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
+                <ul class="navbar-nav mr-auto">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+                        <strong>산책장소</strong>
+                        <span class="sr-only">(current)</span></a>
+                     </li>
+                     <li class="nav-item">
+                          <a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1"><strong>펫시터</strong></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1"><strong>갤러리</strong></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1"><strong>자유게시판</strong></a>
+                     </li>
+                     <li class="nav-item" id="searchBox">
+                         <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
+                         <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="search">
+                     </li>
+                 </ul>
+                   <form class="form-inline my-2 my-lg-0" id="loginNavi">
+                     <a class="mr-sm-2" style="width:75px;" href="${pageContext.request.contextPath}/adminMain.ad"><strong>관리자</strong></a>
+                     <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem"><strong>로그아웃</strong></a>
+                   </form>
+              </div>
+            </nav>
+     	</c:when>
 		<c:otherwise>
-			<div class="container-fluid p-0" id="navibar">
-				<div class="row m-0">
-					<div class="col-12 col-lg-3 col-xl-2 p-0">
-						<a href="${pageContext.request.contextPath}/main.jsp"><img src="project_logo.jpg"></a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">산책장소</a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1">펫시터</a>
-					</div>
-					<div class="col-3 col-lg-2 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/galList.gal?cpage=1">갤러리</a>
-					</div>
-					<div class="col-3 col-lg-3 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/listProc.fb?cpage=1">자유게시판</a>
-					</div>
-					<div class="col-12 col-lg-4 col-xl-4 p-0">
-						<img src="search.png" id="searchImg"> <input type="text"
-							placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3"
-							id="search">
-					</div>
-					<div class="col-6 col-lg-4 col-xl-1 p-0 navitext" id="mypage">
-						<a href="Mypage.mem">마이페이지</a>
-					</div>
-					<div class="col-6 col-lg-4 col-xl-1 p-0 navitext">
-						<a href="${pageContext.request.contextPath}/logout.mem">로그아웃</a>
-					</div>
-				</div>
-			</div>
+			<nav class="navbar navbar-expand-lg navbar-light bg-white" id="navibar">
+		        <a class="navbar-brand p-0 mr-4" href="${pageContext.request.contextPath}/main.jsp">
+		        	<img src="project_logo.jpg">
+		        </a>
+		        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		          	<span class="navbar-toggler-icon"></span>
+		        </button>
+		        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="line-height: 100px;">
+			    	<ul class="navbar-nav mr-auto">
+			            <li class="nav-item active">
+			            	<a class="nav-link" href="${pageContext.request.contextPath}/getCourse.cos?course_area=종로구">
+			            	<strong>산책장소</strong>
+			            	<span class="sr-only">(current)</span></a>
+			            </li>
+			            <li class="nav-item">
+			              	<a class="nav-link" href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1"><strong>펫시터</strong></a>
+			            </li>
+			            <li class="nav-item">
+			                <a class="nav-link" href="${pageContext.request.contextPath}/galList.gal?cpage=1"><strong>갤러리</strong></a>
+			            </li>
+			            <li class="nav-item">
+			                <a class="nav-link" href="${pageContext.request.contextPath}/listProc.fb?cpage=1"><strong>자유게시판</strong></a>
+			            </li>
+			            <li class="nav-item" id="searchBox">
+			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
+			                <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="search">
+			            </li>
+			        </ul>
+          			<form class="form-inline my-2 my-lg-0" id="loginNavi">
+			            <a class="mr-sm-2" style="width:75px;" href="Mypage.mem"><strong>마이페이지</strong></a>
+			            <a class="my-2 my-sm-0" style="width:70px;" href="${pageContext.request.contextPath}/logout.mem"><strong>로그아웃</strong></a>
+		          	</form>
+        		</div>
+     		 </nav>
 		</c:otherwise>
 	</c:choose>
     <!-- END nav -->
