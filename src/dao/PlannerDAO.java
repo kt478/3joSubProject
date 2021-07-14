@@ -63,7 +63,7 @@ public class PlannerDAO {
 	}
 	
 	public int aloneAddPlan(PlannerDTO dto) throws Exception { // 혼자산책하는 일정 추가
-		String sql = "insert into planner values (planner_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into planner values (planner_seq.nextval,?,?,?,?,?,?,?,?,?,?)";
 		try(
 				Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -76,8 +76,8 @@ public class PlannerDAO {
 			pstat.setNString(6, dto.getEnd());
 			pstat.setNString(7, dto.getPostcode());
 			pstat.setNString(8, dto.getAddress1());
+			pstat.setNString(9, null);
 			pstat.setNString(10, null);
-			pstat.setNString(11, null);
 			
 			int result = pstat.executeUpdate();
 			con.commit();

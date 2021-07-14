@@ -104,7 +104,9 @@
 									</div>
 								</div>
 
-								<a href="${pageContext.request.contextPath}/Signup/idfind.jsp"><h3 style="text-align:center"; >아이디 찾기로  이동</h3></a>
+
+								<a href="${pageContext.request.contextPath}/Signup/Idfind.jsp"><h3 style="text-align:center"; >아이디 찾기로  이동</h3></a>
+
 								<a href="${pageContext.request.contextPath}/Signup/signupView.jsp"><h3 style="text-align:center">회원가입으로 이동</h3></a>
 
 							</c:otherwise>
