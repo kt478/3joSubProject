@@ -95,6 +95,8 @@ a:visited {text-decoration: none; color: black;}
 a:active{text-decoration: none; color: black;}
 a:hover{text-decoration: none; color: #146c43;}
 h5:hover{font-weight:700;}
+#adddog{padding-top:40px;border:1px solid #146c43;color:#146c43;}
+#adddog:hover{background-color:#146c43;color:white;}
 </style>
 </head>
 <body>
@@ -178,7 +180,7 @@ h5:hover{font-weight:700;}
         <div class="row profile p-0 m-0">
             <div class="col-6 person p-2">
                 <div class="row m-0 p-4 top">
-                    <div class="col-6 img"> 
+                    <div class="col-6 img p-0"> 
                         <img src="person_img/${person_img.person_oriName}" class="w-100 h-100">
                     </div>
                     <div class="col-6 name">
@@ -190,18 +192,25 @@ h5:hover{font-weight:700;}
             </div>
             <div class="col-6 dog p-2">
                 <div class="row m-0 p-4 top">
-                    <div class="col-6 img">
-               		  <c:forEach var="dimg" items="${dog_img}">   
-                        <img src="files/${dimg.dog_oriName}" class="w-100 h-100">
-                      </c:forEach> 
-                    </div>
-                    <div class="col-6 name">
-                        <c:forEach var="dog" items="${dog_list}">
-                        <h2 class="m-0 h-100">${dog.dog_name}</h2>
-                        <hr style="height: 5px; max-width:150px;background-color: #146c43; opacity: 1;
-                      			 position: relative; top: -130px;">   
-                         </c:forEach>
-                    </div>
+                <c:choose>
+                	<c:when test="${dog_img} ">
+                		<div class="col-6 img p-0">
+                			<img src="files/${dog_img.dog_oriName}" class="h-100">
+                		</div>	
+                		<div class="col-6 name">
+                			<h2 class="m-0 h-100">${dog.dog_name}</h2>
+                        	<hr style="height: 5px; max-width:150px;background-color: #146c43; opacity: 1;
+                      			 	position: relative; top: -130px;">  
+                      	</div>			 
+                	</c:when>
+                	<c:otherwise>
+                		<div class="col-12 p-5">
+                			<div class="btn btn-outline-success w-100 h-100" id="adddog">
+                				<h4 class="m-0">🐶강아지 정보추가🐶</h4>
+                			</div>
+                		</div>
+                	</c:otherwise>
+                </c:choose>
                 </div>
             </div>
         </div>
@@ -210,23 +219,24 @@ h5:hover{font-weight:700;}
  	<div class="container rounded p-4 pt-5" id="bottomContainer">
         <div class="menu p-2">
             <div class="row m-0" style="height:100%">
-                <div class="col-md-4 p-2">
+                <div class="col-8 p-2">
                     <a href="${pageContext.request.contextPath}/history.planner">
                         <h5 class="title m-0">📆우리 동네 플래너📆</h5>
                     </a>
                 </div>
-                <div class="col-md-4 p-2">
+                <div class="col-4 p-2">
                     <a href="${pageContext.request.contextPath}/list.message">
                         <h5 class="title m-0">💌내가 받은 쪽지함💌</h5>
                     </a>
                 </div>
-                <div class="col-4 p-2">
-                 <a href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1&search=id&search2=&keyword=${login.id}">
-                     <h5 class="title m-0">🐾내가 올린 펫시터🐾</h5>
-                  </a> 
-              </div>
+                
             </div>
-            <div class="row m-0" style="height:100%"> 
+            <div class="row m-0" style="height:100%">
+            	<div class="col-4 p-2">
+                 	<a href="${pageContext.request.contextPath}/petBoardList.pet?cpage=1&search=id&search2=&keyword=${login.id}">
+                     	<h5 class="title m-0">🐾내가 올린 펫시터🐾</h5>
+                  	</a> 
+              	</div>
             	<div class="col-4 p-2">
 	                 <a href="${pageContext.request.contextPath}/galList.gal?cpage=1&category=writer&keyword=${login.id}">
 	                     <h5 class="title m-0">💟내가 올린 사진💟</h5>
@@ -237,26 +247,21 @@ h5:hover{font-weight:700;}
                        <h5 class="title m-0">📋내가 올린 게시글📋</h5>
                   	</a>
 	            </div>
-				 <div class="col-4 p-2">
-	                <a href="${pageContext.request.contextPath}/doginfo.dog">
-	                     <h5 class="title m-0">🐶강아지 정보추가🐶</h5>
-	                  </a>
-	             </div>
             </div>
           <div class="row m-0" style="height:100%">   
               <div class="col-4 p-2">
                  <a href="${pageContext.request.contextPath}/doginfomodify.dog">
-                     <h5 class="title m-0">강아지 정보수정</h5>
+                     <h5 class="title m-0">🐶강아지 정보수정🐶</h5>
                   </a>
               </div>
                 <div class="col-4 p-2">
                    <a href="${pageContext.request.contextPath}/modify.mem">
-                         <h5 class="title m-0">내 정보수정</h5>
+                         <h5 class="title m-0">😊내 정보수정😊</h5>
                     </a>
                 </div>
                 <div class="col-4 p-2">
                       <a href="" id="signout">
-                        <h5 class="title m-0">회원 탈퇴</h5>
+                        <h5 class="title m-0">😭회원 탈퇴😭</h5>
                     </a>
                 </div>
             </div>
