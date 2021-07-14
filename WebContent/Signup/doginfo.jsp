@@ -239,7 +239,7 @@
                          -->
 							<div class="form-group form-button">
 								<input type="submit" name="signup" id="signup"
-									class="form-submit" value="Register" />
+									class="form-submit" value="강아지 추가하기" />
 							</div>
 
 
@@ -253,7 +253,7 @@
 								src="${pageContext.request.contextPath}/Signup/images/signup-image.jpg"
 								alt="modify image">
 						</figure>
-						<a href="#" class="signup-image-link">I am already member</a>
+					
 					</div>
 				</div>
 				<!-- <div class="form-group form-button border" style="margin-top:-95px">
