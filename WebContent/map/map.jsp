@@ -59,14 +59,16 @@
                 center: new kakao.maps.LatLng(37.566826004661, 126.978652258309), //지도의 중심좌표.
                 level: 5 //지도의 레벨(확대, 축소 정도)
             };
-		
+            
             let map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴 
-        	 
-	            var bounds = new kakao.maps.LatLngBounds(); // 인자를 주지 않으면 빈 영역을 생성한다.
-				var area = new kakao.maps.LatLng($("#lat").val() , $("#lng").val());
-				bounds.extend(area);
-	            map.setBounds(bounds);
-	            map.setLevel(7);
+            
+	        var bounds = new kakao.maps.LatLngBounds(); // 인자를 주지 않으면 빈 영역을 생성한다.
+			var area = new kakao.maps.LatLng($("#lat").val() , $("#lng").val());
+			bounds.extend(area);
+	        map.setBounds(bounds);
+	        map.setLevel(7);
+	        
+	        var markers = [];
         
         	if($(".searchCos").val()!=null){
         		// 주소-좌표 변환 객체를 생성합니다
@@ -81,8 +83,12 @@
             	            map: map,            	            
             	            position: coords
             	        });
+            	        markers.push(marker);
             	        map.setCenter(coords);
             	        map.setLevel(5);
+            	        for(var i=0; i<markers.length-1; i++){
+                    		markers[i].setMap(null);
+                    	}
             	    } 
             	});   
             	$("#map").css("width","580px");
@@ -143,9 +149,12 @@
             	            map: map,            	            
             	            position: coords
             	        });
-						
+            	        markers.push(marker);
             	        map.setCenter(coords);
             	        map.setLevel(5);
+            	        for(var i=0; i<markers.length-1; i++){
+                    		markers[i].setMap(null);
+                    	}
             	    } 
             	});        
 	            	$("#cosImg img").attr("src","map/img/"+$(this).find("#real_name").val());
