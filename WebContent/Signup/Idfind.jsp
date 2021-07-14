@@ -53,7 +53,7 @@
 							</div>
 
 							<div class="signin-form">
-								<h2 class="form-title">아이디 찾기</h2>
+								<h2 class="form-title" style="text-align:center;">아이디 찾기</h2>
 
 								<form action="${pageContext.request.contextPath}/IdFind.idf"method="POST">
 									
