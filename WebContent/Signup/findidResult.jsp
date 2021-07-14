@@ -56,7 +56,7 @@
 
 			<div class="container" style="margin-top: 150px;">
 				<div class="signin-content">
-					<div class="signin-image">
+					<div class="signin-image" style="margin-bottom:-75px;">
 						<figure>
 							<img
 								src="${pageContext.request.contextPath}/Signup/images/signin-image.jpg"

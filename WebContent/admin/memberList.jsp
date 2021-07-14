@@ -260,30 +260,33 @@ $(function () {
 			<div class="col-12"><h3>회원 정보</h3>
 		</div>
 	</div>
-	
 	<c:forEach var="i" items="${list}">
- 		<div class="row m-0 p-4 box">
-            <div class="col-9 p-0">
-            	 <div class="row m-0">
-                    <div class="col-12">
-                        <h3>아이디 : ${i.id}</h3>
-                    </div>
-                </div>
-                <div class="row m-0">
-                    <div class="col-12 col-md-3 pl-3 pt-3">회원 이름 : ${i.person_name}</div>
-                    <div class="col-12 col-md-3 pl-3 pt-3">회원 나이 : ${i.person_age}</div>
-                    <div class="col-12 col-md-3 pl-3 pt-3">회원 성별 : ${i.person_gender}</div>
-                </div>
-                <div class="row m-0">
-                    <div class="col-12 col-md-3 pl-3 pt-3">지역 : ${i.local}</div>
-                    <div class="col-12 col-md-4 pl-3 pt-3">이메일 : ${i.email}</div>
-                    <div class="col-12 col-md-4 pl-3 pt-3">회원 가입일 : ${i.reg_date}</div>
-                </div>
-            </div>
-            <div class="col-3 p-0" id="profile">
-                <div class="image"><img src="person_img/${i.person_oriName}" style="width:265px; height:120px;"></div>
-            </div>
- 		</div>
+		<c:choose>
+			<c:when test="${i.id!='admin'}">
+ 				<div class="row m-0 p-4 box">
+            		<div class="col-9 p-0">
+            	 		<div class="row m-0">
+                   			 <div class="col-12">
+                        		<h3>아이디 : ${i.id}</h3>
+                    		</div>
+                		</div>
+                		<div class="row m-0">
+                    		<div class="col-12 col-md-3 pl-3 pt-3">회원 이름 : ${i.person_name}</div>
+                    		<div class="col-12 col-md-3 pl-3 pt-3">회원 나이 : ${i.person_age}</div>
+                    		<div class="col-12 col-md-3 pl-3 pt-3">회원 성별 : ${i.person_gender}</div>
+                		</div>
+                		<div class="row m-0">
+                    		<div class="col-12 col-md-3 pl-3 pt-3">지역 : ${i.local}</div>
+                    		<div class="col-12 col-md-4 pl-3 pt-3">이메일 : ${i.email}</div>
+                    		<div class="col-12 col-md-4 pl-3 pt-3">회원 가입일 : ${i.reg_date}</div>
+                		</div>
+            		</div>
+           			 <div class="col-3 p-0" id="profile">
+                		<div class="image"><img src="person_img/${i.person_oriName}" style="width:265px; height:120px;"></div>
+            		</div>
+ 				</div>
+ 			</c:when>
+ 		</c:choose>
  	</c:forEach>
  	<!-- 페이징 -->
  	<div class="row">
