@@ -467,13 +467,13 @@
 	        </div>
 	       <!--  <div ><input type=button value="일정 추가하기" class="btn btn-outline-success" id=btn></div>  -->
 	        <c:choose>
+	        	<c:when test="${login.id=='admin'}">
+	        		<div><input type=button value="산책 관리자페이지" class="btn btn-outline-success" id=adminBtn></div> 
+				</c:when>
 	        	<c:when test="${login != null }">
 	        		<div><input type=button value="일정 추가하기" class="btn btn-outline-success" id="userBtn">
 	        		<input type="hidden" value="${login.id}" id="checklogin">
 	        		</div> 
-				</c:when>
-				<c:when test="${login.id == 'admin' }">
-	        		<div><input type=button value="산책 관리자페이지" class="btn btn-outline-success" id=adminBtn></div> 
 				</c:when>
 				<c:otherwise>
 					<div><input type=button value="일정 추가하기" class="btn btn-outline-success" id="btn">
