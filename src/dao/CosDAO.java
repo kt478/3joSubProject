@@ -32,7 +32,7 @@ public class CosDAO {
 	}
 	
 	public String getPlaceAddress(String placeName) throws Exception {
-		String sql = "select address1 from walk_place where place_name=?";
+		String sql = "select address1 from course where course_name=?";
 		try(
 				Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class CosDAO {
 	}
 	
 	public CosDTO getAllAddress (String place_name) throws Exception {
-		String sql = "select postcode, address1, address2 from walk_place where place_name=?";
+		String sql = "select postcode, address1 from course where course_name=?";
 		try(
 				Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -69,7 +69,8 @@ public class CosDAO {
 	}
 	
 	public String getPlace_Name(String address1) throws Exception {
-		String sql = "select place_name from walk_place where address1=?";
+		String sql = "select course_name from course where address1=?";
+
 		try(
 				Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -79,7 +80,7 @@ public class CosDAO {
 					ResultSet rs = pstat.executeQuery();
 					){
 				if(rs.next()) {
-					return rs.getNString("place_name");
+					return rs.getNString("course_name");
 				}else {
 					return null;
 				}

@@ -39,7 +39,7 @@ p {position:absolute; top:200px; left:300px; color: white;}
 
 /* 게시글 작성 폼 */
 .title {overflow: hidden; padding-bottom: 10px; border-bottom: 5px solid seagreen;}
-.title h3 input {border: none;}
+.title h3 input {border: none; width: 100%;}
 .title h3 input:focus {outline: none;}
 .contents {padding: 20px; min-height: 300px;}
 .contents textarea {padding: 5px; width: 100%; height: 100%; border-color: #fff;}

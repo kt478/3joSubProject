@@ -543,7 +543,7 @@ $(function() {
 <!--문의하기  -->
    <section
       class="ftco-appointment ftco-section ftco-no-pt ftco-no-pb img"
-      style="background-image: url(images/bg_3.png);">
+      style="background-image: url(images/bg_5.png);">
       <div class="overlay"></div>
       <div class="container">
          <div class="row d-md-flex justify-content-end">

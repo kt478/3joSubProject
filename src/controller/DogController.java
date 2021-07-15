@@ -81,22 +81,8 @@ public class DogController extends HttpServlet {
 				String dog_parent_id=(multi.getParameter("dog_parent_id"));
 				System.out.println(dog_parent_id);
 				int result = dao.dogregist(dto);
-				
+				System.out.println("rkddkwl");
 				 request.getSession().setAttribute("login",sessionDTO);
-				
-//		      	String dog_name=multi.getParameter("dog_name");
-//		      	String dog_breed=multi.getParameter("dog_breed");
-//		      	String dog_gender=multi.getParameter("dog_gender");
-//		      	String dog_feature =multi.getParameter("dog_feature");
-//		      	String dog_age=multi.getParameter("dog_age");
-//		      	String dog_neutering=multi.getParameter("dog_neutering");
-//		      	String oriName = multi.getOriginalFileName("profile");
-//		      	String sysName = multi.getFilesystemName("profile");
-//		      	System.out.println("원본파일 이름 : "+oriName);
-//		      	System.out.println("원본파일 이름 : "+sysName);
-//		      	String dog_parent_id = multi.getParameter("dog_parent");
-//		      	
-//		      	int result =  dao. dogregist(dto= new DogDTO(0,dog_name,dog_breed,dog_gender,dog_feature,dog_age,dog_neutering,oriName,sysName,dog_parent_id,null));
 		     
 
 				 response.sendRedirect("main.jsp");
@@ -106,11 +92,9 @@ public class DogController extends HttpServlet {
 	    		  PersonDTO sessionDTO= (PersonDTO)request.getSession().getAttribute("login");
 	    		  System.out.println(sessionDTO);
 	    		  
-	    		  List<DogDTO> list2 = dao.OwnDogList(sessionDTO.getId());
-	    		  request.setAttribute("list2",list2);
+	    		  DogDTO list = dao.OwnDogList(sessionDTO.getId());
+	    		  request.setAttribute("list",list);
 	    		  request.getRequestDispatcher("Signup/doginfomodify.jsp").forward(request,response);
-	    	    	  
-	    	    	  
 	    	    	  
 	    	      }else if(url.contentEquals("/doginfomodifyPro.dog")) {
 	    	    	  
