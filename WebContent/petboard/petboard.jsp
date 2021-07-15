@@ -292,7 +292,7 @@ h1{position:relative; top:150px; color:black;}
     <!-- 게시글 리스트 -->
     <div class="container p-3" id="body">
          <!-- 이거 box하나가 1개 컨텐츠로 잡고 포리치돌리면 될듯? -->
-        <c:forEach var="i" items="${list}">
+        <c:forEach var="i" items="${list}" varStatus="s">
            <div class="row m-0 p-4 list" onclick="location.href='${pageContext.request.contextPath}/detailWrite.pet?seq=${i.seq}'" style="cursor:pointer;">
            <div class="col-9 p-0">
                 <div class="row m-0">

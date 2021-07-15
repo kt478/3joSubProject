@@ -24,6 +24,8 @@
     	    	   $("#pet_age").prop("required",false);
     	    	   $("#pet_neutering").prop("required",false);
     	    	   $("#pet_feature").prop("required",false);
+    	    	   $("[name=local2]").attr("required",true);
+    	    	   $("[name=place_name]").attr("required",true);
     	       }else{
     	    	   $("#pet_name").prop("required",true);
     	    	   $("#pet_breed").prop("required",true);
@@ -31,6 +33,8 @@
     	    	   $("#pet_age").prop("required",true);
     	    	   $("#pet_neutering").prop("required",true);
     	    	   $("#pet_feature").prop("required",true);
+    	    	   $("[name=local2]").attr("required",true);
+    	    	   $("[name=place_name]").attr("required",true);
     	       }
     	   })
 
@@ -97,7 +101,7 @@ div{color:gray; font-weight:600; font-size:medium;}
 					</select>
 				</div>
 				<div class="col-12 col-md-10 p-2">
-					<input type="text" placeholder="제목을 입력해주세요" id="title" class="form-control" name="title" style="width: 100%;">
+					<input type="text" placeholder="제목을 입력해주세요" id="title" class="form-control" name="title" style="width: 100%;" required>
 				</div>
 			</div>
 			<div class="row">
@@ -242,7 +246,7 @@ div{color:gray; font-weight:600; font-size:medium;}
 				<div class="col-md-10 col-12 p-2">
 					 <label for="taskId" class="col-form-label">자치구</label>
                         <select name="local" id="local2" class="form-control" onchange="categoryChange(this)" required> 
-                           <option>거주하는 구를 선택하세요.</option>
+                           <option value="">거주하는 구를 선택하세요.</option>
                            <option value="강남구">강남구</option>
                            <option value="강동구">강동구</option>
                            <option value="강북구">강북구</option>
@@ -344,7 +348,7 @@ div{color:gray; font-weight:600; font-size:medium;}
 			<div class="row">
 				<div class="col-12 p-2">
 					<textarea name="contents" placeholder="게시글 내용을 입력해주세요" class="form-control"
-						style="width: 100%; height: 100%;"></textarea>
+						style="width: 100%; height: 100%;" required></textarea>
 				</div>
 			</div>
 			<div class="row button">
