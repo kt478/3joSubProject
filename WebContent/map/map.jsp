@@ -22,6 +22,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
     <script>
         $(function(){
+        	$("#btn").hide();
+        	$("#userBtn").hide();
+        	 
         	//관리자
 			$("#adminBtn").on("click",function(){
 					location.href="${pageContext.request.contextPath}/cosList.cos?cpage=1";
@@ -138,6 +141,12 @@
             	//$("#map").css("width","40%");
             	$("#ex").show();
             	
+            	if($("#checklogin").val() == "null"){
+            		$("#btn").show();
+            	}else if($("#checklogin").val() != null && $("#checklogin").val() != "admin"){
+            		$("#userBtn").show();
+            	} 
+            	
             	$(".radio").attr("checked",false); 
             	$(this).find(".radio").attr("checked",true);
             	// 주소-좌표 변환 객체를 생성합니다
@@ -169,7 +178,7 @@
 	            	$(".ex_time").html('<i class="far fa-clock"  style="margin-right: 10px;"></i>'+$(this).find("#ex_time").val());
 	            	$(".ex_way").html('<i class="fas fa-long-arrow-alt-up" style="margin-right: 10px;"></i>'+$(this).find("#ex_way").val());
 	            	
-	            	 $("#calendar_postcode").val($(this).find("#postcode").val());
+	            	$("#calendar_postcode").val($(this).find("#postcode").val());
 	            	 $("#calendar_address1").val($(this).find("#address1").val());
 	            	 $("#input_local").val($(this).find(".course_area").text());
             })
@@ -242,7 +251,7 @@
         .areaN,.menu:hover {cursor: pointer;}
         #course{width:100%; height: 200px; border-top: 1px solid gray;}
         #area>div{font-size: 10px; }
-        #title{width:360px; text-align:center; background-color: green; height:60px;
+        #title{width:360px; text-align:center; background-color:#52734D; height:60px;
         line-height: 60px; color: white;}
 		#side{width:360px; height:600px; border:1px solid #ddd; }
 		.menu>div{float:left;}
@@ -251,18 +260,21 @@
 		#radio{margin-right:10px;}
 		.course_area{font-size:10px;}
 		#btn{text-align:center;}
-		#map{position: absolute;left:400px; width:73%;height:600px;}
+		#map{position: absolute;left:400px; width:70%;height:600px;}
         .wrapper>div{float: left;}
-        #ex{position: relative; left:43%;width:30%;}
+        #ex{position: relative; left:44%;width:30%;}
         #ex>div{border: 1px solid #ddd}
         #cosImg>img{width: 100%; height: 100%;}
         #cosImg{width: 100%; height:300px;}
         #ex_cos{text-align: center; height: 40px;line-height: 40px; font-weight:bold; font-size:20px;}
         #explain>div{border: 1px solid #ddd; padding: 3px; padding-left: 12px;}
         #ex{display:none;}
-        #userBtn{position:absolute; left:700px; bottom:10px;}
-        #btn{position:absolute; left:700px; bottom:10px;}
-        #adminBtn{position:absolute; left:100px; bottom:10px;}
+        #userBtn{position:absolute; left:800px; bottom:10px;border:1px solid #146c43; color:#146c43; }
+        #userBtn:hover{background-color:#146c43;color:white;}
+        #btn{position:absolute; left:800px; bottom:10px;border:1px solid #146c43; color:#146c43;}
+        #btn:hover{background-color:#146c43;color:white;}
+        #adminBtn{position:absolute; left:100px; bottom:10px;border:1px solid #146c43; color:#146c43;}
+        #adminBtn:hover{background-color:#146c43;color:white;}
     </style>
 </head>
 <body>
@@ -381,7 +393,7 @@
 <!-- 산책장소 시작 -->
     <div class="container-fluid wrapper">
 	    	<div id="side">
-	    	<div id=title>산책코스 추천</div>
+	    	<div id=title><strong>산책코스 추천</strong></div>
 	        <div id="area">
 	            <img src="${pageContext.request.contextPath}/map/img/map.PNG" alt="">
 	            <div>
@@ -456,18 +468,20 @@
 	       <!--  <div ><input type=button value="일정 추가하기" class="btn btn-outline-success" id=btn></div>  -->
 	        <c:choose>
 	        	<c:when test="${login != null }">
-	        		<div ><input type=button value="일정 추가하기" class="btn btn-outline-success" id=userBtn></div> 
+	        		<div><input type=button value="일정 추가하기" class="btn btn-outline-success" id="userBtn">
+	        		<input type="hidden" value="${login.id}" id="checklogin">
+	        		</div> 
+				</c:when>
+				<c:when test="${login.id == 'admin' }">
+	        		<div><input type=button value="산책 관리자페이지" class="btn btn-outline-success" id=adminBtn></div> 
 				</c:when>
 				<c:otherwise>
-					<div ><input type=button value="일정 추가하기" class="btn btn-outline-success" id=btn></div> 
+					<div><input type=button value="일정 추가하기" class="btn btn-outline-success" id="btn">
+					<input type="hidden" value="null" id="checklogin">
+					</div> 
 				</c:otherwise>
-			</c:choose>
-			<c:choose>
-				<c:when test="${login.id == 'admin' }">
-	        		<div ><input type=button value="산책 관리자페이지" class="btn btn-outline-success" id=adminBtn></div> 
-				</c:when>
 			</c:choose> 
-			
+				
 			</div>
 			
 			<div id="map"></div>

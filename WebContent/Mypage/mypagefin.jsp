@@ -95,8 +95,9 @@ a:visited {text-decoration: none; color: black;}
 a:active{text-decoration: none; color: black;}
 a:hover{text-decoration: none; color: #146c43;}
 h5:hover{font-weight:700;}
-#adddog{padding-top:40px;border:1px solid #146c43;color:#146c43;}
-#adddog:hover{background-color:#146c43;color:white;}
+#adddog{padding-top:40px;border:1px solid #146c43;}
+#adddog:hover{background-color:#146c43;}
+#adddog:hover>a>h4{color:white;}
 </style>
 </head>
 <body>
