@@ -393,7 +393,7 @@
 <!-- 산책장소 시작 -->
     <div class="container-fluid wrapper">
 	    	<div id="side">
-	    	<div id=title><strong>산책코스 추천</strong></div>
+	    	<div id=title><strong>산책장소 추천</strong></div>
 	        <div id="area">
 	            <img src="${pageContext.request.contextPath}/map/img/map.PNG" alt="">
 	            <div>
