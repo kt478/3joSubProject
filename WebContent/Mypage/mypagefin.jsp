@@ -261,7 +261,7 @@ h5:hover{font-weight:700;}
                     </a>
                 </div>
                 <div class="col-4 p-2">
-                      <a href="" id="signout">
+                      <a href="${pageContext.request.contextPath}/logout.mem" id="signout">
                         <h5 class="title m-0">😭회원 탈퇴😭</h5>
                     </a>
                 </div>
