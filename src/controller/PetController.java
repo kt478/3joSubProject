@@ -272,7 +272,8 @@ public class PetController extends HttpServlet {
 			}
 			
 		}catch(Exception e) {
-
+			e.printStackTrace();
+			response.sendRedirect("eror1.jsp");
 		}
 	}
 
