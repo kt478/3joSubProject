@@ -78,7 +78,8 @@ public class CalendarController extends HttpServlet {
 				response.getWriter().append(result);
 			}
 		}catch (Exception e) {
-			
+			e.printStackTrace();
+			response.sendRedirect("error1.jsp");
 		}
 	}
 

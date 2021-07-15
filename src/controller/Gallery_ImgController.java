@@ -93,6 +93,7 @@ public class Gallery_ImgController extends HttpServlet {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			response.sendRedirect("error1.jsp");
 		}
 		
 		

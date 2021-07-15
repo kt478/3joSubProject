@@ -46,7 +46,9 @@ public class IdFindController extends HttpServlet {
 			}
 
 		}catch(Exception e){
-			e.printStackTrace();}
+			e.printStackTrace();
+			response.sendRedirect("error1.jsp");
+			}
 	}
 
 

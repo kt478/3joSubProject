@@ -264,7 +264,8 @@ public class PlannerController extends HttpServlet {
 
 			}
          }catch(Exception e) {
-            
+        	 e.printStackTrace();
+        	 response.sendRedirect("error1.jsp");
          }
       }
 
