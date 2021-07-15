@@ -237,7 +237,7 @@ public class CosDAO {
 	
 	public List<CosDTO> getPageList(int startNum,int endNum,String keyword)throws Exception{
 		String sql="select * from "
-				+ "(select row_number() over(order by seq desc) rnum,course_area,course_name,address1,postcode,oriName from course where course_area like ? or course_name like ? or address1 like ? ) "
+				+ "(select row_number() over(order by seq asc) rnum,course_area,course_name,address1,postcode,oriName from course where course_area like ? or course_name like ? or address1 like ? ) "
 				+ "where rnum between ? and ?";
 		try(Connection con= this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
