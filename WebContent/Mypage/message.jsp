@@ -13,6 +13,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
     <script>
         $(function(){
             // 네비바 검색창
@@ -84,6 +85,7 @@
         })    
     </script>
     <style>
+    * {font-family: 'Sunflower';}
     body{background-color: #91C788;}
     #navibar{
         background-color:white;
