@@ -57,7 +57,6 @@
             $("#search").on("blur",function(){
                $("#search").hide("slow");
             })  
-
         	let container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
             let options = { //지도를 생성할 때 필요한 기본 옵션
                 center: new kakao.maps.LatLng(37.566826004661, 126.978652258309), //지도의 중심좌표.
@@ -95,7 +94,7 @@
                     	}
             	    } 
             	});   
-            	$("#map").css("width","580px");
+            	$("#map").css("width","40%");
             	$("#cosImg img").attr("src","map/img/"+$(".searchImg").val());
             	$("#ex").css("display","block");
             	$("#ex_cos").text($(".searchCos").val());
@@ -116,12 +115,6 @@
            	 	
         	}
         	
-        	$(".menu").on("ready",function(){
-        		if($(".searchCos").val()==$(this).find(".course_name").text()){
-           			alert($(this));
-           		}
-        	})
-        	
         	
             $(".areaN").on("click",function(){
             	$("#ex").hide();
@@ -132,20 +125,17 @@
             })
             
             $(".menu").on("click",function(){
-            	$("#map").css("width","580px");
+            	$("#map").css("width","40%");
             	$("#ex").show();
             	
             	$(".radio").attr("checked",false); 
             	$(this).find(".radio").attr("checked",true);
             	// 주소-좌표 변환 객체를 생성합니다
             	var geocoder = new kakao.maps.services.Geocoder();
-
             	// 주소로 좌표를 검색합니다
             	geocoder.addressSearch($(this).find("#address1").val(), function(result, status) {
-
             	    // 정상적으로 검색이 완료됐으면 
             	     if (status === kakao.maps.services.Status.OK) {
-
             	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
             	        
             	        // 결과값으로 받은 위치를 마커로 표시합니다
@@ -173,7 +163,6 @@
 	            	 $("#calendar_address1").val($(this).find("#address1").val());
 	            	 $("#input_local").val($(this).find(".course_area").text());
             })
-
             // modal부분.
 			$("#userBtn").on("click",function(){
 				 $("#input_place_name").val($("#ex_cos").html());
@@ -186,7 +175,6 @@
 			     })
 			     
 			     $("#addCalendar").on("click",function(){
-			    	 alert("");
 			    	 $.ajax({ 
 	            		url:"exam.cos",
 	            		type:"post",
@@ -235,15 +223,15 @@
     #loginNavi>a:hover{color: #52734D;border-bottom:3px solid #52734D;}
     #loginNavi>a:visited{color: black;}
 /* 페이지전체 navi Style 부분 끝 */ 
-    
+  
     *{box-sizing:border-box; font-family:Sunflower;}
-        .wrapper{width:1300px; height: 660px; margin-left:30px; margin-right:30px;position: relative; }
-        #area{width:100%; margin-bottom: 40px; position: relative; margin-top: 30px;}
+        .wrapper{width:100%; height: 660px; margin-left:25px; margin-right:25px; position: relative;}
+        #area{width:100%; padding-bottom: 35px; position: relative; padding-top:35px;}
         #area img{width: 100%; height: 100%;}
         .areaN,.menu:hover {cursor: pointer;}
         #course{width:100%; height: 200px; border-top: 1px solid gray;}
         #area>div{font-size: 10px; }
-        #title{width:360px; text-align:center; background-color: green; height: 60px;
+        #title{width:360px; text-align:center; background-color: green; height:60px;
         line-height: 60px; color: white;}
 		#side{width:360px; height:600px; border:1px solid #ddd; }
 		.menu>div{float:left;}
@@ -252,9 +240,9 @@
 		#radio{margin-right:10px;}
 		.course_area{font-size:10px;}
 		#btn{text-align:center;}
-		#map{position: absolute; top: 0px; left: 400px; width:1000px;height:600px;}
+		#map{position: absolute;left:400px; width:73%;height:600px;}
         .wrapper>div{float: left;}
-        #ex{position: relative; left: 650px;width: 440px;}
+        #ex{position: relative; left:43%;width:30%;}
         #ex>div{border: 1px solid #ddd}
         #cosImg>img{width: 100%; height: 100%;}
         #cosImg{width: 100%; height:300px;}
@@ -380,37 +368,37 @@
 	</c:choose>
 
 <!-- 산책장소 시작 -->
-    <div class="wrapper">
+    <div class="container-fluid wrapper">
 	    	<div id="side">
 	    	<div id=title>산책코스 추천</div>
 	        <div id="area">
 	            <img src="${pageContext.request.contextPath}/map/img/map.PNG" alt="">
 	            <div>
-	                <div class="areaN" style="position: absolute; text-align: center; top: 138px; right: 20px;">강동구</div>
-	                <div class="areaN" style="position: absolute; text-align: center; top: 180px; right: 48px;">송파구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 195px; right: 97px;">강남구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 210px; right: 133px;">서초구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 145px; right: 70px;">광진구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 95px; right: 66px;">중랑구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 112px; right: 91px;">동대문구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 139px; right: 108px;">성동구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 187px; right: 180px;">동작구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 223px; right: 179px;">관악구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 166px; right: 205px;">영등포구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 212px; right: 230px;">금<br>천<br>구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 194px; left: 57px;">구로구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 170px; left: 65px;">양천구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 125px; left: 35px;">강서구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 132px; left: 105px;">마포구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 115px; left: 125px;">서대문구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 75px; left: 126px;">은평구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 110px; left: 170px;">종로구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 55px; left: 191px;">강북구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 37px; left: 213px;">도봉구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 58px; left: 249px;">노원구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 93px; left: 200px;">성북구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 158px; left: 168px;">용산구</div>
-                    <div class="areaN" style="position: absolute; text-align: center; top: 132px; left: 184px;">중구</div>
+	                <div class="areaN" style="position: absolute; text-align: center; top: 175px; right: 20px;">강동구</div>
+	                <div class="areaN" style="position: absolute; text-align: center; top: 220px; right: 48px;">송파구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 230px; right: 97px;">강남구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 245px; right: 133px;">서초구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 177px; right: 70px;">광진구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 130px; right: 68px;">중랑구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 150px; right: 97px;">동대문구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 175px; right: 110px;">성동구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 225px; right: 180px;">동작구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 260px; right: 185px;">관악구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 200px; right: 208px;">영등포구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 250px; right: 230px;">금<br>천<br>구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 230px; left: 60px;">구로구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 207px; left: 70px;">양천구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 165px; left: 40px;">강서구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 170px; left: 112px;">마포구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 153px; left: 128px;">서대문구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 113px; left: 128px;">은평구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 140px; left: 170px;">종로구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 90px; left: 195px;">강북구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 60px; left: 215px;">도봉구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 77px; left: 249px;">노원구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 129px; left: 203px;">성북구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 193px; left: 173px;">용산구</div>
+                    <div class="areaN" style="position: absolute; text-align: center; top: 167px; left: 188px;">중구</div>
                     
 	            </div>
 	        </div>
@@ -419,7 +407,16 @@
 	        <div id="course">
 	           <c:forEach var="clist" items="${clist}">
 	           	<div class=menu>
-		           		<div id="radio"><input type="radio" name="course" class="radio"></div>
+		           		<div id="radio">
+							<c:choose>
+								<c:when test="${searchList.course_name!=null }">
+									<input type="radio" name="course" class="radio" checked>
+								</c:when>
+								<c:otherwise>
+									<input type="radio" name="course" class="radio">
+								</c:otherwise>
+							</c:choose>
+						</div>
 	               		<div>
 		                    <div class="course_area">${clist.course_area}</div>
 		                    <div class="course_name">${clist.course_name}</div>
@@ -462,6 +459,21 @@
 			
 			</div>
 			
+			<div id="map"></div>
+        <input type=hidden value="${mlist.lat}" id=lat>
+        <input type=hidden value="${mlist.lng}" id=lng>
+        <div id="ex">
+	        <div id="cosImg"><img src=""></div>
+	        <div id="ex_cos"></div>
+	        <div id="explain">
+	            <div class="address1"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i></div>
+	            <div class=ex_time><i class="far fa-clock"  style="margin-right: 10px;"></i></div>
+	            <div  class=explain>설명</div>
+	            <div class=ex_way><i class="fas fa-long-arrow-alt-up" style="margin-right: 10px;"></i></div>
+	        </div>
+    	</div>
+    </div>
+    
 			<!-- 일정추가 모달 -->
 			<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
 	        <div class="modal-dialog" role="document">
@@ -495,20 +507,6 @@
 	        </div>
 	   	 </div>
 		
-        <div id="map"></div>
-        <input type=hidden value="${mlist.lat}" id=lat>
-        <input type=hidden value="${mlist.lng}" id=lng>
-        <div id="ex">
-	        <div id="cosImg"><img src=""></div>
-	        <div id="ex_cos"></div>
-	        <div id="explain">
-	            <div class="address1"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i></div>
-	            <div class=ex_time><i class="far fa-clock"  style="margin-right: 10px;"></i></div>
-	            <div  class=explain>설명</div>
-	            <div class=ex_way><i class="fas fa-long-arrow-alt-up" style="margin-right: 10px;"></i></div>
-	        </div>
-    	</div>
-    </div>
-    
+        
 </body>
 </html>

@@ -553,7 +553,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
                 <div class="row"> <!-- 지도 -->
