@@ -51,13 +51,16 @@ public class CalendarController extends HttpServlet {
 					CalendarDTO Cdto = new CalendarDTO();
 					String color;
 					System.out.println(p.getPet_feature());
-					if(p.getPet_feature().contentEquals("사람이나 강아지를 보고 짖어요") 
-							|| p.getPet_feature().contentEquals("법정 지정 맹견이예요")) {
-						color = "tomato";
-					}else if(p.getPerson_id().contentEquals(dto.getId())) {
+					
+					if(p.getPerson_id().contentEquals(dto.getId())) {
 						color = "#52734D";	
 					}else {
-						color = "royalblue";
+						if(p.getPet_feature().contentEquals("사람이나 강아지를 보고 짖어요") 
+								|| p.getPet_feature().contentEquals("법정 지정 맹견이예요")) {
+							color = "tomato";
+						}else {
+							color = "royalblue";
+						}
 					}
 					Cdto.setId(p.getSeq());
 					Cdto.setTitle(p.getPlace_name());;
