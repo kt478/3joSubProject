@@ -38,12 +38,12 @@
 							action="${pageContext.request.contextPath}/infomodifyPro.mem"
 							method="POST" class="register-form" id="register-form"
 							enctype="multipart/form-data">
-
+<c:forEach var="person" items="${list}">
 							<div class="form-group">
 								<label for="id"></label>
-								<c:forEach var="person" items="${list}">
+								
                                 ${person.id} 님, 	 안녕하세요?
-                            	</c:forEach>
+                            	
 							</div>
 
 							<div class="form-group">
@@ -57,20 +57,21 @@
 							</div>
 							<div class="form-group">
 								<label for="email"><i class="zmdi zmdi-email"></i></label> <input
-									type="text" name="email" id="email" placeholder="이메일을 입력해주세요.">
+									type="text" name="email" id="email" value=${person.email}>
 							</div>
 
 
 							<div class="form-group">
 								<label for="name"><i class="zmdi zmdi-account-add"></i></label>
 								<input type="text" name="person_name" id="person_name"
-									placeholder="이름을 입력해주세요." />
+									value=${person.person_name} />
 							</div>
 							<div class="form-group" style="border-bottom: 1px solid gray;">
 								<label for="age"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <select
-									name="person_age" id="person_age"
+									name="person_age" id="person_age" 
 									style="width: 80%; border: 0px; color: gray;">
+									<option selected>${person.person_age} </option>
 									<option>연령대를 선택해주세요.</option>
 									<option value="10대">10대</option>
 									<option value="20대">20대</option>
@@ -86,6 +87,7 @@
 								<label for="gender"><i class="zmdi zmdi-male-female"></i></label>
 								<select name="person_gender" id="person_gender"
 									style="width: 80%; border: 0px; color: gray;">
+									<option selected>${person.person_gender} </option>
 									<option>성별을 선택하세요.</option>
 									<option value="남">남</option>
 									<option value="여">여</option>
@@ -95,13 +97,13 @@
 							<div class="form-group">
 								<label for="contact"><i class="zmdi zmdi-phone"></i></label> <input
 									type="text" name="contact" id="contact"
-									placeholder="연락처를 입력해주세요." />
+									value=${person.contact} />
 
 							</div>
 
 							<div class="form-group">
 								<label for="profile"><i class="zmdi zmdi-camera"></i></label> <input
-									type="file" name="profile" id="profile"
+									type="file" name="profile" id="profile" 
 									class="form-control upload" aria-describedby="file_upload">
 
 							</div>
@@ -110,7 +112,7 @@
 								<label for="local"><i class="zmdi zmdi-home"></i></label> <select
 									name="local" id="local"
 									style="width: 80%; border: 0px; color: gray;">
-									<option>거주하는 구를 선택하세요.</option>
+									<option selected>${person.local} </option>
 									<option value="강남구">강남구</option>
 									<option value="강동구">강동구</option>
 									<option value="강북구">강북구</option>
@@ -149,7 +151,7 @@
 								<input type="submit" name="signup" id="signup"
 									class="form-submit" value="수정하기" />
 							</div>
-
+</c:forEach>
 						</form>
 					</div>
 					
