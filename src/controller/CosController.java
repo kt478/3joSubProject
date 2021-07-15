@@ -27,6 +27,16 @@ import dto.PlannerDTO;
 
 @WebServlet("*.cos")
 public class CosController extends HttpServlet {
+	
+	private String XSSFilter(String target) {
+	      if(target != null) {
+	         target = target.replaceAll("<", "&lt;");
+	         target = target.replaceAll(">", "&gt;");
+	         target = target.replaceAll("&", "&amp;");
+	      }
+	      return target;
+	   }
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8"); // post방식일때는 한글이 안깨짐 / get방식은 깨짐 
 		String requestURI = request.getRequestURI();
@@ -68,7 +78,7 @@ public class CosController extends HttpServlet {
 				
 			}else if(cmd.contentEquals("/search.cos")) {
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
-				String keyWord = request.getParameter("keyWord");
+				String keyWord = XSSFilter(request.getParameter("keyWord"));
 				
 				
 				int endNum=cpage*SearchMapConfig.RECORD_COUNT_PER_PAGE;
@@ -266,6 +276,7 @@ public class CosController extends HttpServlet {
 				}
 		}catch(Exception e) {
 			e.printStackTrace();
+			response.sendRedirect("error1.jsp");
 		}
 	}
 
