@@ -117,8 +117,8 @@ public class PetController extends HttpServlet {
 				
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				String search = request.getParameter("search");
-				String search2 = request.getParameter("search2");
-				String keyword = request.getParameter("keyword");
+				String search2 = XSSFilter(request.getParameter("search2"));
+				String keyword = XSSFilter(request.getParameter("keyword"));
 				System.out.println(cpage);
 				System.out.println(search);
 				System.out.println(search2);
@@ -264,6 +264,7 @@ public class PetController extends HttpServlet {
 
 				request.getRequestDispatcher("petboard/adminPetWrite.jsp").forward(request, response);
 			}else if(cmd.contentEquals("/adminUpdateWrite.pet")) {
+				System.out.println("gg");
 				int seq = Integer.parseInt(request.getParameter("seq"));
 				PetBoardDTO dto = dao.searchWrite(seq);
 				request.setAttribute("dto", dto);
@@ -273,7 +274,7 @@ public class PetController extends HttpServlet {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("eror1.jsp");
+			response.sendRedirect("error1.jsp");
 		}
 	}
 

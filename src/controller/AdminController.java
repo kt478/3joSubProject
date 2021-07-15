@@ -19,8 +19,16 @@ import dto.QuestionDTO;
 
 @WebServlet("*.ad")
 public class AdminController extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	private String XSSFilter(String target) {
+		if (target != null) {
+			target = target.replaceAll("<", "$lt;"); // lt = less than(작다), 기능 escape 해버림
+			target = target.replaceAll(">", "$gt;");
+			target = target.replaceAll("&", "$amp;");
+		}
+		return target;
+	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset =utf-8");
@@ -111,9 +119,9 @@ public class AdminController extends HttpServlet {
 			} else if(url.contentEquals("/questionWrite.ad")) {
 				
 				String type = request.getParameter("type");
-				String name = request.getParameter("name");
-				String email = request.getParameter("email");
-				String contents = request.getParameter("contents");
+				String name = XSSFilter(request.getParameter("name"));
+				String email = XSSFilter(request.getParameter("email"));
+				String contents = XSSFilter(request.getParameter("contents"));
 				
 				int result = Qdao.insert(type, name, email, contents);
 				request.setAttribute("result", result);
@@ -129,6 +137,7 @@ public class AdminController extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			response.sendRedirect("error1.jsp");
 		}
 	}
 
