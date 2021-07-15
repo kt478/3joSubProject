@@ -92,8 +92,8 @@ public class DogController extends HttpServlet {
 	    		  PersonDTO sessionDTO= (PersonDTO)request.getSession().getAttribute("login");
 	    		  System.out.println(sessionDTO);
 	    		  
-	    		  List<DogDTO> list2 = dao.OwnDogList(sessionDTO.getId());
-	    		  request.setAttribute("list2",list2);
+	    		  DogDTO list = dao.OwnDogList(sessionDTO.getId());
+	    		  request.setAttribute("list",list);
 	    		  request.getRequestDispatcher("Signup/doginfomodify.jsp").forward(request,response);
 	    	    	  
 	    	      }else if(url.contentEquals("/doginfomodifyPro.dog")) {

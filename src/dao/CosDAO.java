@@ -69,8 +69,8 @@ public class CosDAO {
 	}
 	
 	public String getPlace_Name(String address1) throws Exception {
-
 		String sql = "select course_name from course where address1=?";
+
 		try(
 				Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
