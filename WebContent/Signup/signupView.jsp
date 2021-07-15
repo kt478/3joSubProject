@@ -218,7 +218,7 @@
 		let emailInput = document.getElementById("email");
 		
 
-		let idReg = /^[a-z0-9]{5,10}$/; //아이디 : 소문자/숫자 조합 5~20자
+		let idReg = /^[a-z0-9]{5,15}$/; //아이디 : 소문자/숫자 조합 5~15자
 		let pwReg = /[A-Za-z0-9]{6,12}$/; //영어알파벳 숫자를 포함한 6~12자
 		let nameReg = /^[가-힣a-zA-Z]{3,10}$/;//영어 알파벳 한글조합 3~10자 
 		let emailReg = /^[a-z0-9\.\-_]+@([a-z]+\.)+[a-z]{3,6}/;//이메일 영문소문자+숫자조합 이메일
@@ -227,7 +227,7 @@
 		document.getElementById("signup").onclick =function() {
 
 			if (!(idReg.test(idInput.value))) {
-				alert("아이디는 5-20자의 영문 소문자,숫자와 특수기호 (_),(-)만 사용 가능합니다.");
+				alert("아이디는 5-15자의 영문 소문자 숫자 조합만 사용 가능합니다."); //
 				return false;
 			}
 			if (!(pwReg.test(pwInput.value))) {
