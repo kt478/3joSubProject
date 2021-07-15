@@ -186,7 +186,6 @@
 			     })
 			     
 			     $("#addCalendar").on("click",function(){
-			    	 alert("");
 			    	 $.ajax({ 
 	            		url:"exam.cos",
 	            		type:"post",
