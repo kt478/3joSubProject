@@ -94,7 +94,7 @@
                     	}
             	    } 
             	});   
-            /* 	$("#map").css("width","580px"); */
+            	$("#map").css("width","40%");
             	$("#cosImg img").attr("src","map/img/"+$(".searchImg").val());
             	$("#ex").css("display","block");
             	$("#ex_cos").text($(".searchCos").val());
@@ -114,12 +114,6 @@
            		console.log($(".course_name").text());
            	 	
         	}
-        	
-        	$(".menu").on("ready",function(){
-        		if($(".searchCos").val()==$(this).find(".course_name").text()){
-           			alert($(this));
-           		}
-        	})
         	
         	
             $(".areaN").on("click",function(){
@@ -414,7 +408,16 @@
 	        <div id="course">
 	           <c:forEach var="clist" items="${clist}">
 	           	<div class=menu>
-		           		<div id="radio"><input type="radio" name="course" class="radio"></div>
+		           		<div id="radio">
+							<c:choose>
+								<c:when test="${searchList.course_name!=null }">
+									<input type="radio" name="course" class="radio" checked>
+								</c:when>
+								<c:otherwise>
+									<input type="radio" name="course" class="radio">
+								</c:otherwise>
+							</c:choose>
+						</div>
 	               		<div>
 		                    <div class="course_area">${clist.course_area}</div>
 		                    <div class="course_name">${clist.course_name}</div>
