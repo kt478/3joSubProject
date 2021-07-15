@@ -52,16 +52,20 @@ public class CalendarController extends HttpServlet {
 					String color;
 					System.out.println(p.getPet_feature());
 					
-					if(p.getPerson_id().contentEquals(dto.getId())) {
-						color = "#52734D";	
+					if(p.getPet_feature()==null) {
+						color="royalblue";
+					}else if(p.getPet_feature().contentEquals("사람이나 강아지를 보고 짖어요") || 
+							p.getPet_feature().contentEquals("법정 지정 맹견이에요")){
+						color = "tomato";
 					}else {
-						if(p.getPet_feature().contentEquals("사람이나 강아지를 보고 짖어요") 
-								|| p.getPet_feature().contentEquals("법정 지정 맹견이예요")) {
-							color = "tomato";
+						if(p.getPerson_id().contentEquals(dto.getId())) {
+							color = "#52734D";
 						}else {
-							color = "royalblue";
+							color="royalblue";
 						}
 					}
+					System.out.println(color);
+					
 					Cdto.setId(p.getSeq());
 					Cdto.setTitle(p.getPlace_name());;
 					Cdto.setStart(p.getStart());
