@@ -110,8 +110,6 @@ public class DogController extends HttpServlet {
 	    		  request.setAttribute("list2",list2);
 	    		  request.getRequestDispatcher("Signup/doginfomodify.jsp").forward(request,response);
 	    	    	  
-	    	    	  
-	    	    	  
 	    	      }else if(url.contentEquals("/doginfomodifyPro.dog")) {
 	    	    	  
 	  	    	    
