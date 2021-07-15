@@ -74,6 +74,11 @@
 	        var markers = [];
         
         	if($(".searchCos").val()!=null){
+        		
+        		var mapContainer = document.getElementById('map');
+    		    mapContainer.style.width = '40%';
+    		    map.relayout();
+        		
         		// 주소-좌표 변환 객체를 생성합니다
             	var geocoder = new kakao.maps.services.Geocoder();
             	// 주소로 좌표를 검색합니다
@@ -125,7 +130,12 @@
             })
             
             $(".menu").on("click",function(){
-            	$("#map").css("width","40%");
+            	
+            	var mapContainer = document.getElementById('map');
+    		    mapContainer.style.width = '40%';
+    		    map.relayout();
+            	
+            	//$("#map").css("width","40%");
             	$("#ex").show();
             	
             	$(".radio").attr("checked",false); 
@@ -410,7 +420,7 @@
 	           	<div class=menu>
 		           		<div id="radio">
 							<c:choose>
-								<c:when test="${searchList.course_name!=null }">
+								<c:when test="${searchList.course_name==clist.course_name }">
 									<input type="radio" name="course" class="radio" checked>
 								</c:when>
 								<c:otherwise>

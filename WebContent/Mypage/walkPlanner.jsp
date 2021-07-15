@@ -187,7 +187,7 @@
                                     title: place_name,
                                     start: start_date,
                                     end : end_date,
-                                    color : 'royalblue'
+                                    color : '#52734D'
                                 });
                             }
                         })
@@ -532,9 +532,10 @@
             <div class="col-12 col-md-5 p-0 pl-1">
                 <div class="row">
                     <div class="col-12 mb-2 p-2" id="weather">
-                    
                         <div class="row m-0">
-                            <div class="col-12" id="weatherDay" style="text-align: center;"></div>
+                            <div class="col-12" id="weatherDay" style="text-align: center;">
+                            	👉날짜를 클릭해 날씨를 알아보세요👈
+                            </div>
                         </div> 
                         <div class="row m-0 h-100">
                             <div class="col-5 p-0" style="text-align: center;">
@@ -736,30 +737,30 @@
                         <script>
                         function categoryChange(e) {
                         	var place_name_강남구 = ["청담근린공원", "대모산자연공원", "양재천"];
-                        	var place_name_강동구 = ["일자산공원", "암사생태공원", "길동자연생태공원"];
+                        	var place_name_강동구 = ["일자산 공원", "광나루한강공원", "천호공원"];
                         	var place_name_강북구 = ["북서울꿈의 숲", "우이천", "솥밭공원"];
                         	var place_name_강서구 = ["봉제산 근린공원", "궁산근린공원", "우장산공원"];
                         	var place_name_관악구 = ["관악산 호수공원", "낙성대공원", "도림천"];
-                        	var place_name_광진구 = ["아차산 생태공원", "뚝섬 한강공원", "광진숲나루"];
-                        	var place_name_구로구 = ["푸른수목원", "구로개봉 유수지 생태공원", "고척근린공원"];
-                        	var place_name_금천구 = ["금천 체육공원", "호암늘솔길", "금천구 안양천"];
-                        	var place_name_노원구 = ["경춘선숲길", "불암산 힐링타운", "영축산 순환산책로"];
+                        	var place_name_광진구 = ["아차산생태공원", "뚝섬 한강공원", "광진숲나루"];
+                        	var place_name_구로구 = ["푸른수목원", "구로개봉유수지 생태공원", "고척근린공원"];
+                        	var place_name_금천구 = ["금천체육공원", "호암늘솔길", "안양천"];
+                        	var place_name_노원구 = ["경춘선 숲길", "불암산 힐링타운", "영축산 순환산책로"];
                         	var place_name_도봉구 = ["방학천", "서울 창포원"];
-                        	var place_name_동대문구 = ["배봉산 둘레길", "답십리공원", "중량천 장안벚꽃안길"];
+                        	var place_name_동대문구 = ["배봉산둘레길", "답십리공원", "장안벚꽃안길"];
                         	var place_name_동작구 = ["보라매공원", "서달산 동작충효길", "사육신공원"];
                         	var place_name_마포구 = ["상암 하늘공원", "경의선숲길", "망원 한강공원"];
-                        	var place_name_서대문구 = ["안산 도시자연공원", "불광천", "궁동근린공원"];
+                        	var place_name_서대문구 = ["안산도시자연공원", "불광천", "궁동근린공원"];
                         	var place_name_서초구 = ["몽마르뜨공원", "양재시민의 숲", "우면산"];
-                        	var place_name_성동구 = ["서울숲", "금호산 응봉근린공원", "달맞이봄공원"];
+                        	var place_name_성동구 = ["서울숲", "응봉근린공원", "달맞이봄공원"];
                         	var place_name_성북구 = ["개운산공원", "정릉천", "오동공원"];
                         	var place_name_송파구 = ["송파둘레길", "아시아공원", "올림픽공원"];
-                        	var place_name_양천구 = ["서서울공원", "용왕산 근린공원", "달마을 근린공원"];
-                        	var place_name_영등포구 = ["여의도 한강공원", "양화 한강공원", "선유도공원"];
-                        	var place_name_용산구 = ["옹산가족공원", "이촌한강공원", "남산둘레길"];
-                        	var place_name_은평구 = ["봉산 둘레길", "서울 혁신파크", "신사근린공원"];
+                        	var place_name_양천구 = ["서서울공원", "서울특별시 용왕산 근린공원", "달마을근린공원"];
+                        	var place_name_영등포구 = ["여의도 한강공원", "양화한강공원", "선유도공원"];
+                        	var place_name_용산구 = ["용산가족공원", "이촌 한강공원", "남산 둘레길"];
+                        	var place_name_은평구 = ["봉산 둘레길", "서울혁신파크", "신사근린공원"];
                         	var place_name_종로구 = ["북악스카이웨이", "낙산공원", "숭인근린공원"];
                         	var place_name_중구 = ["남산공원", "서울로 7107", "매봉산공원"];
-                        	var place_name_중랑구 = ["중량천", "봉화산", "용마폭포공원"];
+                        	var place_name_중랑구 = ["중랑천", "봉화산 둘레길", "용마폭포공원"];
                         	
                         	var target = document.getElementById("place_name");
                         	
