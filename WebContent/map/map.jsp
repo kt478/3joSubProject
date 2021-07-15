@@ -137,7 +137,6 @@
             	var mapContainer = document.getElementById('map');
     		    mapContainer.style.width = '40%';
     		    map.relayout();
-            	
             	//$("#map").css("width","40%");
             	$("#ex").show();
             	
@@ -156,15 +155,14 @@
             	    // 정상적으로 검색이 완료됐으면 
             	     if (status === kakao.maps.services.Status.OK) {
             	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-            	        
+            	        map.setLevel(5, {anchor: coords});
             	        // 결과값으로 받은 위치를 마커로 표시합니다
             	        var marker = new kakao.maps.Marker({
             	            map: map,            	            
             	            position: coords
             	        });
             	        markers.push(marker);
-            	        map.setCenter(coords);
-            	        map.setLevel(5);
+            	        map.panTo(coords);
             	        for(var i=0; i<markers.length-1; i++){
                     		markers[i].setMap(null);
                     	}
