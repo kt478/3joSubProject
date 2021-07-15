@@ -97,7 +97,7 @@ public class PlannerController extends HttpServlet {
                 String place_name = request.getParameter("place_name");
 
                 String pet_feature = ddao.getFeature(id);
-
+                System.out.println(pet_feature);
                 CosDTO cdto = cdao.getAllAddress(place_name);
                 
                 PlannerDTO Pdto = new PlannerDTO(0, id, pet_feature, local, place_name, start, end, 

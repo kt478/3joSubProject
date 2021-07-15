@@ -22,7 +22,7 @@
     }
     #searchBox{position: relative;min-height: 110px;}
     .nav-item:hover{border-bottom:3px solid #52734D;}
-    #search{
+    #naviSearch{
         width:250px; height:40px;
         position: absolute;
         top:40px;
@@ -30,14 +30,14 @@
         display: none;
     }
     #searchImg{position: absolute;top:40px;}
-    #searchImg:active~#search{left:0px;}
+    #searchImg:active~#naviSearch{left:0px;}
     #searchBox{width:300px;}
     #loginNavi{min-width: 150px;}
     #loginNavi>a{color:black;}
     #loginNavi>a:link{text-decoration:none;}
     #loginNavi>a:hover{color: #52734D;border-bottom:3px solid #52734D;}
     #loginNavi>a:visited{color: black;}
-    #search{
+    #naviSearch{
         width:250px; height:40px;
         position: absolute;
         top:40px;
@@ -70,17 +70,17 @@ h1{position:relative; top:150px; color:black;}
     $(function(){
     	// 네비바 검색창 보이게
     	$("#searchImg").on("click", function() {
-    		$("#search").show("slow");
-    		$("#search").focus();
+    		$("#naviSearch").show("slow");
+    		$("#naviSearch").focus();
     	})
-    	$("#search").on("blur", function() {
-    		$("#search").hide("slow");
+    	$("#naviSearch").on("blur", function() {
+    		$("#naviSearch").hide("slow");
     	})
 
     	//네비바 검색창에서 검색기능
-    	$("#search").on("keyup",function(e) {
+    	$("#naviSearch").on("keyup",function(e) {
     		if (e.keyCode == 13) {
-    			let search = $("#search").val();
+    			let search = $("#naviSearch").val();
     			location.href = "${pageContext.request.contextPath}/search.cos?cpage=1&keyWord=" + search;
     		}
     	})
@@ -174,7 +174,7 @@ h1{position:relative; top:150px; color:black;}
 			            </li>
 			            <li class="nav-item" id="searchBox">
 			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
-			                <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="search">
+			                <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="naviSearch">
 			            </li>
 			        </ul>
 		          	<form class="form-inline my-2 my-lg-0" id="loginNavi">
@@ -210,7 +210,7 @@ h1{position:relative; top:150px; color:black;}
                      </li>
                      <li class="nav-item" id="searchBox">
                          <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
-                         <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="search">
+                         <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="naviSearch">
                      </li>
                  </ul>
                    <form class="form-inline my-2 my-lg-0" id="loginNavi">
@@ -246,7 +246,7 @@ h1{position:relative; top:150px; color:black;}
 			            </li>
 			            <li class="nav-item" id="searchBox">
 			                <img src="search.png" class="nav-link" tabindex="-1" aria-disabled="true" id="searchImg">
-			                <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="search">
+			                <input type="search" placeholder="원하는구,장소를 검색하세요." class="form-control me-2 ml-3" id="naviSearch">
 			            </li>
 			        </ul>
           			<form class="form-inline my-2 my-lg-0" id="loginNavi">
@@ -292,7 +292,7 @@ h1{position:relative; top:150px; color:black;}
     <!-- 게시글 리스트 -->
     <div class="container p-3" id="body">
          <!-- 이거 box하나가 1개 컨텐츠로 잡고 포리치돌리면 될듯? -->
-        <c:forEach var="i" items="${list}">
+        <c:forEach var="i" items="${list}" varStatus="s">
            <div class="row m-0 p-4 list" onclick="location.href='${pageContext.request.contextPath}/detailWrite.pet?seq=${i.seq}'" style="cursor:pointer;">
            <div class="col-9 p-0">
                 <div class="row m-0">
