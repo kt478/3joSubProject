@@ -227,7 +227,7 @@ h5:hover{font-weight:700;}
                 </div>
                 <div class="col-4 p-2">
                     <a href="${pageContext.request.contextPath}/list.message">
-                        <h5 class="title m-0">💌내가 받은 쪽지함💌</h5>
+                        <h5 class="title m-0">💌쪽지함💌</h5>
                     </a>
                 </div>
                 
