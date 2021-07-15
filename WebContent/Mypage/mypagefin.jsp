@@ -198,7 +198,7 @@ h5:hover{font-weight:700;}
                 			<img src="files/${dog_img.dog_oriName}" class="h-100">
                 		</div>	
                 		<div class="col-6 name">
-                			<h2 class="m-0 h-100">${dog.dog_name}</h2>
+                			<h2 class="m-0 h-100">${dog_list.dog_name}</h2>
                         	<hr style="height: 5px; max-width:150px;background-color: #146c43; opacity: 1;
                       			 	position: relative; top: -130px;">  
                       	</div>			 
