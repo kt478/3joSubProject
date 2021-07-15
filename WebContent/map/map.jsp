@@ -410,7 +410,7 @@
 	           	<div class=menu>
 		           		<div id="radio">
 							<c:choose>
-								<c:when test="${searchList.course_name!=null }">
+								<c:when test="${searchList.course_name==clist.course_name }">
 									<input type="radio" name="course" class="radio" checked>
 								</c:when>
 								<c:otherwise>
