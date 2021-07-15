@@ -185,8 +185,8 @@ public class PersonController extends HttpServlet {
 				System.out.println(filesPath);
 				File filesFolder= new File(filesPath); //파일 객체를 통해서 파일의 이름 사이즈 폴더생성가능
 				int maxSize = 1024*1024*20;
-				if(!filesFolder.exists()) filesFolder.mkdir(); 
-				MultipartRequest multi = new MultipartRequest(request,filesPath,maxSize,"utf8",new DefaultFileRenamePolicy()); 
+				if(!filesFolder.exists()) filesFolder.mkdir();
+				MultipartRequest multi = new MultipartRequest(request,filesPath,maxSize,"utf8",new DefaultFileRenamePolicy());
 
 				String pw=dao.getSHA512(multi.getParameter("pw"));
 				System.out.println(pw);
@@ -208,10 +208,10 @@ public class PersonController extends HttpServlet {
 				System.out.println("원본파일 이름 : "+person_sysName);
 				String id = sessionDTO.getId();
 				System.out.println(id);
-				int result =  dao.infomodify(new PersonDTO(pw,person_name,email,person_age,person_gender,local,contact,person_sysName,person_oriName,id,null));
-
+				int result =  dao.infomodify(new PersonDTO(id,pw,person_name,email,person_age,person_gender,local,contact,person_sysName,person_oriName,null));
+				System.out.println(result);
 				System.out.println("수정완료");
-				response.sendRedirect("Signup/login.jsp");
+				response.sendRedirect("Mypage.mem");
 
 			}
 

@@ -32,12 +32,6 @@
 <script>
 $(function(){
 	
-	$("#mypagebtn").on("click",function(){
-		
-		location.href="${pageContext.request.contextPath}/Mypage1.mem";
-		
-		
-	})
 		
 	
 	$("#signin").on("click",function(){

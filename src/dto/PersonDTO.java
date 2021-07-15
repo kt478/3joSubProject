@@ -35,6 +35,13 @@ public PersonDTO(String id, String pw, String person_name, String email, String 
 	this.person_oriName = person_oriName;
 	this.reg_date = reg_date;
 }
+
+
+
+
+
+
+
 public PersonDTO(String id, String person_sysName, String person_oriName) {
 	this.id = id;
 	this.person_sysName = person_sysName;
