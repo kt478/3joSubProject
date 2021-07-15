@@ -155,11 +155,11 @@ public class PersonController extends HttpServlet {
 				PersonDTO person_img =dao.onefilesById(sessionDTO.getId());
 				System.out.println(person_img.getPerson_oriName());
 				
-				List<DogDTO> dog_list = ddao.OwnDogList(sessionDTO.getId());
-				List<DogDTO> dog_img = ddao.filesById(sessionDTO.getId());
-
-				request.setAttribute("person_img",person_img); //이미지뽑기
+				DogDTO dog_list = ddao.OwnDogList(sessionDTO.getId());
+				DogDTO dog_img = ddao.filesById(sessionDTO.getId());
 				
+				request.setAttribute("person_img",person_img); //이미지뽑기
+				System.out.println(dog_img);
 				request.setAttribute("dog_list",dog_list);//개정보
 				request.setAttribute("dog_img", dog_img);
 				request.getRequestDispatcher("Mypage/mypagefin.jsp").forward(request,response);

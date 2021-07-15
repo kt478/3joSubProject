@@ -163,6 +163,7 @@
 	            	 $("#calendar_address1").val($(this).find("#address1").val());
 	            	 $("#input_local").val($(this).find(".course_area").text());
             })
+            
             // modal부분.
 			$("#userBtn").on("click",function(){
 				 $("#input_place_name").val($("#ex_cos").html());

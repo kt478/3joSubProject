@@ -193,12 +193,13 @@ h5:hover{font-weight:700;}
             <div class="col-6 dog p-2">
                 <div class="row m-0 p-4 top">
                 <c:choose>
-                	<c:when test="${dog_img} ">
+                	<c:when test="${dog_img != null }">
+
                 		<div class="col-6 img p-0">
                 			<img src="files/${dog_img.dog_oriName}" class="h-100">
                 		</div>	
                 		<div class="col-6 name">
-                			<h2 class="m-0 h-100">${dog.dog_name}</h2>
+                			<h2 class="m-0 h-100">${dog_list.dog_name}</h2>
                         	<hr style="height: 5px; max-width:150px;background-color: #146c43; opacity: 1;
                       			 	position: relative; top: -130px;">  
                       	</div>			 
