@@ -13,7 +13,7 @@
 </head>
 <style>
 .container{position: relative; top:100px;text-align: center;}
-.Btn{width:40%; position:absolute; left:360px;}
+.Btn{width:40%; position:absolute; left:460px;}
 </style>
 <body>
 <body>
@@ -25,7 +25,7 @@
         </div>
             <img src="404.png">
         <div class="row p-4 Btn">
-            <button class="btn btn-light col-12">메인페이지로 돌아가기</button>
+            <a href="${pageContext.request.contextPath}/main.jsp"><button class="btn btn-light col-12">메인페이지로 돌아가기</button></a>
         </div>
     </div>
 </body>
