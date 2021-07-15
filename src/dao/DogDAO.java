@@ -53,14 +53,14 @@ public class DogDAO {
 			}
 		}
 
-		public List <DogDTO> OwnDogList(String sessionid)throws Exception{
+		public DogDTO OwnDogList(String sessionid)throws Exception{
 			String sql = "select * from dog_info where dog_parent_id=? order by seq desc ";
 			try(Connection con = this.getConnection();
 					PreparedStatement pstat = con.prepareStatement(sql);
 					){pstat.setString(1,sessionid);
 					try(ResultSet rs = pstat.executeQuery()){
-						List<DogDTO> list = new ArrayList<>();
-						while(rs.next()) {
+						
+						if(rs.next()) {
 							int seq =rs.getInt("seq");
 							String dog_name = rs.getNString("dog_name");
 							String dog_breed = rs.getNString("dog_breed");
@@ -72,10 +72,10 @@ public class DogDAO {
 							String dog_sysName= rs.getNString("dog_sysName");
 							String dog_parent_id=rs.getNString("dog_parent_id");
 							Date dog_reg_date =rs.getDate("dog_reg_date");
-							list.add(new DogDTO(0,dog_name,dog_breed,dog_gender,dog_feature,dog_age,dog_neutering,dog_sysName,dog_oriName,dog_parent_id,null));
-
+							
+							return new DogDTO(0,dog_name,dog_breed,dog_gender,dog_feature,dog_age,dog_neutering,dog_sysName,dog_oriName,dog_parent_id,null);
 						}
-						return list;
+						return null;
 					}
 				}
 		}
@@ -105,21 +105,22 @@ public class DogDAO {
 			}		
 		}
 		
-		public List<DogDTO> filesById(String dog_parent_id)throws Exception{
+		public DogDTO filesById(String dog_parent_id)throws Exception{
 			String sql ="select * from dog_info where dog_parent_id=?";
 			try(Connection con = this.getConnection();
 					PreparedStatement pstat = con.prepareStatement(sql);
 					){
 				pstat.setNString(1, dog_parent_id);
 				try(ResultSet rs = pstat.executeQuery()){
-					List<DogDTO> dlist =new ArrayList<>();
-					while(rs.next()) {
+
+					if(rs.next()) {
 						String dog_parent_id1 = rs.getNString("dog_parent_id");
 						String oriName= rs.getNString("dog_oriName");
 						String sysName= rs.getNString("dog_sysName");
-						dlist.add(new DogDTO(dog_parent_id1,oriName,sysName));
+						
+						return new DogDTO(dog_parent_id1,oriName,sysName);
 					}
-					return dlist;
+					return null;
 				}
 			}
 		}

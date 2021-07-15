@@ -152,11 +152,11 @@
 								<select name="dog_feature" id="dog_feature"
 									style="width: 80%; border: 0px; color: gray;">
 									<option>강아지의 성격을 선택해주세요.</option>
-		                           <option value="활발하고 활동적이에요">활발하고 활동적이에요</option>
-		                           <option value="사람이나 강아지를 보고 짖어요">사람이나 강아지를 보고 짖어요</option>
-		                           <option value="조용하고 소심해요">조용하고 소심해요</option>
-		                           <option value="법정 지정 맹견이에요">법정 지정 맹견이에요</option>
-		                           <option value="예민하지 않고 친근한 성격이에요">예민하지 않고 친근한 성격이에요</option>
+		                            <option value="활발하고 활동적이에요">활발하고 활동적이에요</option>
+		                            <option value="사람이나 강아지를 보고 짖어요">사람이나 강아지를 보고 짖어요</option>
+		                            <option value="조용하고 소심해요">조용하고 소심해요</option>
+		                            <option value="법정 지정 맹견이에요">법정 지정 맹견이에요</option>
+		                            <option value="예민하지 않고 친근한 성격이에요">예민하지 않고 친근한 성격이에요</option>
 								</select>
 							</div>
 
