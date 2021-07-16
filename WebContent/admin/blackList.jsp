@@ -256,10 +256,10 @@ body {background-color: white; border-color: black;}
 
 <!-- 블랙리스트 -->
    <div class="container-lg border p-0" id="BlackListView"
-      style="/* display:none; */width: 1600px; height: 500px; margin-left: 250px; margin-top: 50px; box-sizing: border-box">
+      style="/* display:none; */width: 1600px; height: 500px; margin-left: 250px; margin-top: 50px; box-sizing: border-box ;overflow-x:auto; overflow-y:scroll;">
       <h3 style="text-align: center">가입 회원 정보 조회</h3>
 
-      <div class="row m-0" style="box-sizing: border-box">
+      <div class="row m-0" style="box-sizing: border-box; over-flow-y:scroll;">
 
          <div class="border col-lg-1 col-xl-1">아이디</div>
          <div class="border col-lg-2 col-xl-2">이메일</div>
@@ -302,7 +302,7 @@ body {background-color: white; border-color: black;}
    </div>
 
    <div class="container-lg border p-0" id="BlackListView2"
-      style="/* display:none; */ text-align:center; width: 1600px; height: 500px; margin-left: 250px; margin-top: 170px; box-sizing: border-box">
+      style="/* display:none; */ text-align:center; width: 1600px; height: 500px; margin-left: 250px; margin-top: 170px; box-sizing: border-box overflow-x:auto; overflow-y:scroll;">
       <h3 style="text-align: center">블랙리스트 회원 조회</h3>
 
       <div class="row m-0" style="box-sizing: border-box; margin-left:550px; text-align:center'">
