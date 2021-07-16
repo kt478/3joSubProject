@@ -20,6 +20,15 @@ import dto.CosDTO;
 
 @WebServlet("*.message")
 public class MessageController extends HttpServlet {
+	private String XSSFilter(String target) {
+		if(target != null) {
+			target = target.replaceAll("<", "&lt;");
+			target = target.replaceAll(">", "&gt;");
+			target = target.replaceAll("&", "&amp;");
+		}
+		return target;
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 
@@ -38,10 +47,10 @@ public class MessageController extends HttpServlet {
 				PersonDTO dto = (PersonDTO)request.getSession().getAttribute("login");
 				
 				int pb_seq = Integer.parseInt(request.getParameter("pb_seq"));
-				String title = request.getParameter("title");
+				String title = XSSFilter(request.getParameter("title"));
 				String send_id = dto.getId();		
 				String to_id = request.getParameter("to_id");
-				String contents = request.getParameter("contents");
+				String contents = XSSFilter(request.getParameter("contents"));
 				System.out.println(pb_seq + " : " + title + " : " + send_id + " : " + to_id + " : " + contents);
 				
 				int result = mdao.insert(new MessageDTO(pb_seq, title, send_id, to_id, contents));
@@ -52,12 +61,12 @@ public class MessageController extends HttpServlet {
 				PersonDTO dto = (PersonDTO)request.getSession().getAttribute("login");
 				
 	            int pb_seq = Integer.parseInt(request.getParameter("pb_seq"));
-	            String title = request.getParameter("title");
+	            String title = XSSFilter(request.getParameter("title"));
 
 	            String send_id = dto.getId();     
 	            String to_id = request.getParameter("to_id");
 
-	            String contents = request.getParameter("contents");
+	            String contents = XSSFilter(request.getParameter("contents"));
 
 	            System.out.println(pb_seq + " : " + title + " : " + send_id + " : " + to_id + " : " + contents);
 
