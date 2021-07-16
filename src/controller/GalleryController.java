@@ -28,10 +28,6 @@ import dto.GalleryDTO;
 import dto.Gallery_ImgDTO;
 import dto.PersonDTO;
 
- 
-
-
-
 
 @WebServlet("*.gal")
 public class GalleryController extends HttpServlet {
@@ -43,34 +39,23 @@ public class GalleryController extends HttpServlet {
 
 		String ctxPath = request.getContextPath();
 
-
 		String url = requestURI.substring(ctxPath.length());
 		System.out.println("url : " + url);
 
-
-
-
-
 		try {
-
 			GalleryDAO dao = GalleryDAO.getInstance();
 			GalleryDTO dto = new GalleryDTO();
 			
 			Gallery_ImgDTO midto = new Gallery_ImgDTO();
 			Gallery_ImgDAO idao = Gallery_ImgDAO.getInstance();
 
-
 			if(url.contentEquals("/galWrite.gal")) {
 
 				String filesPath = request.getServletContext().getRealPath("files");
 				File filesFolder = new File(filesPath);   
 
-
-
 				int maxSize = 1024 * 1024 * 10 ;
-
-
-
+				
 				if(!filesFolder.exists()) filesFolder.mkdir();
 
 				MultipartRequest multi = new MultipartRequest(request, filesPath , Gallery_ImgConfig.uploadMaxSize,"utf8", new DefaultFileRenamePolicy());
@@ -98,20 +83,13 @@ public class GalleryController extends HttpServlet {
 					String oriName = multi.getOriginalFileName(fileName);
 					String sysName = multi.getFilesystemName(fileName);
 
-
-
 					Gallery_ImgDTO idto = new Gallery_ImgDTO(0,oriName, sysName,seq);
-
 
 					if(oriName!=null) {
 						System.out.println("파일 이름" + oriName +"DB에 저장됨.");
 						idao.filesInsert(idto);
-
-
 					}
 				}
-
-
 
 				List<Gallery_ImgDTO> ilist = idao.selectAll();
 				for(Gallery_ImgDTO idto : ilist) {
@@ -125,14 +103,7 @@ public class GalleryController extends HttpServlet {
 
 				/* response.sendRedirect("galList.gal?cpage=1"); */
 
-
-
-
-
-
 			}else if(url.contentEquals("/galList.gal")) {
-
-
 
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 
@@ -156,26 +127,12 @@ public class GalleryController extends HttpServlet {
 					list = dao.getPageList(startNum, endNum,category,keyword);
 				}
 
-
 				List<String> pageNavi = dao.getPageNavi(cpage,category,keyword);
-
-
 				
 				for(GalleryDTO gdto : list) {
 					Gallery_ImgDTO idto = idao.selectThumbBySeq(gdto.getSeq());
 					gdto.setThumbPath(idto.getSysName());
 				}
-				
-				
-
-				
-				
-
-
-
-
-
-			
 
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
@@ -187,7 +144,6 @@ public class GalleryController extends HttpServlet {
 				request.getRequestDispatcher("Gallery/gallery_main.jsp").forward(request, response);
 
 
-
 			}else if(url.contentEquals("/galDetail.gal")) {
 
 				int seq = Integer.parseInt(request.getParameter("seq"));
@@ -196,14 +152,10 @@ public class GalleryController extends HttpServlet {
 
 				/* List<Gallery_ImgDTO> Gallery_ImgList = idao.filesBySeq(seq); */	
 
-
-
-
 				CommentsDAO cmt = CommentsDAO.getInstance();
 
 				List<Gallery_ImgDTO> ilist = idao.filesBySeq(seq);
 				List<CommentsDTO> list = cmt.list(seq);
-
 
 				request.setAttribute("list", list);
 				request.setAttribute("content", content);
@@ -290,22 +242,15 @@ public class GalleryController extends HttpServlet {
 
 				String filesPath = request.getServletContext().getRealPath("files");
 
-
-			
-				
-				
-				
 				int seq = Integer.parseInt(request.getParameter("seq"));
 
+				String oriName = idao.getOriName(seq);
+				
 				dao.delete(seq);
 				
-				
-				
-				String oriName = idao.getOriName(seq);
 				File targetFile = new File(filesPath+"/"+oriName);
 				targetFile.delete();
-				
-							
+
 				idao.fileDelete(seq);
 
 				response.sendRedirect("galList.gal?cpage=1");
@@ -317,11 +262,9 @@ public class GalleryController extends HttpServlet {
 				int endNum = cpage * Front_GalleryConfig.RECORD_COUNT_PER_PAGE;
 				int startNum = endNum - (Front_GalleryConfig.RECORD_COUNT_PER_PAGE-1);
 
-
 				List<GalleryDTO> list;
-
+				
 				list = dao.getPageList(startNum, endNum);
-
 
 				for(GalleryDTO gdto : list) {
 					Gallery_ImgDTO idto = idao.selectThumbBySeq(gdto.getSeq());
@@ -360,9 +303,6 @@ public class GalleryController extends HttpServlet {
 
 
 				List<String> pageNavi = dao.getPageNavi(cpage,category,keyword);
-
-
-
 
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
@@ -426,24 +366,13 @@ public class GalleryController extends HttpServlet {
 				String gallery = g.toJson(list);
 				response.getWriter().append(gallery);
 
-
-				
-				
 			}
-			
-			
-			
-
 
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("error1.jsp");
 
 		}
-
-
-
-
 	}
 
 

@@ -73,8 +73,7 @@ public class Gallery_ImgDAO {
 			}
 		}
 	}
-
-
+	
 	public Gallery_ImgDTO selectThumbBySeq(int seq) throws Exception{
 		String sql = "select * from gallery_img where gallery_seq = ? and seq =(select min(seq) from gallery_img where gallery_seq=?)";
 		try(
@@ -95,15 +94,10 @@ public class Gallery_ImgDAO {
 
 					return dto;
 				}
-
-
 			}
 		}
 		return null;
 	}
-
-
-
 
 	public int fileDelete(int seq)throws Exception {
 
@@ -119,7 +113,6 @@ public class Gallery_ImgDAO {
 		}
 	}
 
-
 	public String getOriName(int seq)throws Exception {
 		String sql = "select oriname from gallery_img where gallery_seq = ?";
 		try(Connection con = this.getConnection();
@@ -129,14 +122,8 @@ public class Gallery_ImgDAO {
 				rs.next();
 				return rs.getString("oriname");
 			}
-
-
 		}
-
-
 	}
-
-
 
 	public String getSysName(int seq)throws Exception {
 		String sql = "select sysname from gallery_img where seq = ?";
@@ -175,6 +162,7 @@ public class Gallery_ImgDAO {
 		}
 
 	}
+	
 	public int getSeq() throws Exception{
 		String sql = "select gallery_seq.nextval from dual" ;
 		try(
@@ -187,16 +175,7 @@ public class Gallery_ImgDAO {
 			rs.next(); 
 
 			return rs.getInt(1);
-
-
-
-
 		}
-
 	}
-
-
-
-
 
 }

@@ -82,6 +82,7 @@ public class GalleryDAO {
 		}
 
 	}
+	
 	 public int getSeq() throws Exception{
 			String sql = "select gallery_seq.nextval from dual" ;
 			try(
@@ -94,12 +95,7 @@ public class GalleryDAO {
 						rs.next(); 
 						
 						return rs.getInt(1);
-						
-						
-						
-					
 				}
-			
 	   }
 	 
 	 
@@ -132,10 +128,6 @@ public class GalleryDAO {
 			}
 			return null;
 		}
-	 
-	 
-	 
-	
 	 
 	 
 	 public int update(int seq, String title, String contents) throws Exception {
@@ -287,9 +279,6 @@ public class GalleryDAO {
 					 recordTotalCount =this.getRecordCount(category,keyword);
 				 }
 		     
-		      
-		      
-		      
 		      int recordCountPerpage = GalleryConfig.RECORD_COUNT_PER_PAGE; // 한 페이지당 보여줄 게시글의 개수
 		      int naviCountPerPage = GalleryConfig.NAVI_COUNT_PER_PAGE; // 내 위치 페이지를 기준으로 시작부터 끝까지의 페이지가 총 몇개인지. 
 		      
