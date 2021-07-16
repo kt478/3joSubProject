@@ -199,7 +199,7 @@
 	            		url:"exam.cos",
 	            		type:"post",
 	            		data:{"start_date" : $("#calendar_start_date").val(), "end_date" : $("#calendar_end_date").val(),
-	            			"local" : $("#input_place_name").val(), "place_name" : $("#input_place_name").val(),
+	            			"local" : $("#input_local").val(), "place_name" : $("#input_place_name").val(),
 	            			"postcode" : $("#calendar_postcode").val(), "address1" : $("#calendar_address1").val()}
 	            	}).done(function(resp){
 	            		if(resp=="1"){
