@@ -113,7 +113,6 @@
 	         		}) 
 	         		
 	         		$("#myview_delete").on("click",function(){
-	         			alert(eventData.event.id);
 	         			$.ajax({ 
 	            			url:"delete.planner",
 	            			type:"get",
