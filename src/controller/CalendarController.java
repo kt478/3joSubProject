@@ -56,7 +56,11 @@ public class CalendarController extends HttpServlet {
 						color="royalblue";
 					}else if(p.getPet_feature().contentEquals("사람이나 강아지를 보고 짖어요") || 
 							p.getPet_feature().contentEquals("법정 지정 맹견이에요")){
-						color = "tomato";
+						if(p.getPerson_id().contentEquals(dto.getId())) {
+							color = "#52734D";
+						}else {
+							color = "tomato";
+						}
 					}else {
 						if(p.getPerson_id().contentEquals(dto.getId())) {
 							color = "#52734D";

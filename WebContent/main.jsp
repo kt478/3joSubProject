@@ -13,7 +13,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
 <style>
-
 * {font-family: 'Sunflower';}
 /* 페이지전체 navi Style 부분 시작 */
     #navibar{
